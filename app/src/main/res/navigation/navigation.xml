@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.ithunammaveedu.fragments.homefrag.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_cart"
+            app:destination="@id/cart" />
+    </fragment>
+    <fragment
+        android:id="@+id/yourInfo"
+        android:name="com.example.ithunammaveedu.fragments.yourinfofrag.yourInfo"
+        android:label="yourInfo" />
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.example.ithunammaveedu.fragments.cart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/history"
+        android:name="com.example.ithunammaveedu.fragments.history"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+</navigation>

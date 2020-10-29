@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.ithunammaveedu.fragments.yourinfofrag.YourinfoViewModel" />
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.yourinfofrag.yourInfo">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="229dp"
+        android:layout_height="46dp"
+        android:text="@{viewModel.mail}" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="229dp"
+        android:layout_height="46dp"
+        android:text="@{viewModel.username}"
+        />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="229dp"
+        android:layout_height="46dp"
+        android:hint="phone"
+        android:text="@{viewModel.phone}"
+       />
+
+    <EditText
+        android:layout_width="224dp"
+        android:id="@+id/address"
+        android:layout_height="139dp"
+        android:hint="ADDRESSS"
+        android:text="@{viewModel.address}"
+        />
+
+    <Button
+        android:id="@+id/save_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+
+
+</FrameLayout>
+</layout>

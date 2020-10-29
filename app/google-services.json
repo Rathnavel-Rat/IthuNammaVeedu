@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1010049760253",
+    "firebase_url": "https://ithunammaveedu-8dc2a.firebaseio.com",
+    "project_id": "ithunammaveedu-8dc2a",
+    "storage_bucket": "ithunammaveedu-8dc2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010049760253:android:f2fc592f2fb5f173efb794",
+        "android_client_info": {
+          "package_name": "com.example.ithunammaveedu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010049760253-nm1atfmihsar15aghqh628o63jblvjc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0DncNrs5uF5Qw-ZXduPevO57YS3wNyZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010049760253-nm1atfmihsar15aghqh628o63jblvjc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
