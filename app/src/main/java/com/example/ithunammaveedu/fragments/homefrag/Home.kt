@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.databinding.FragmentHomeBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class Home : Fragment() {
@@ -18,19 +23,24 @@ class Home : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
-        setHasOptionsMenu(true)
-        Log.i("hom","oncreate")
-        val food_list= arrayListOf<Food>()
-        val viewModel=ViewModelProvider(this).get(FragViewModel::class.java)
-        val adapter=Adapter(food_list, AddClickListener{ run { viewModel.apply { addAnItemToList(it) }  } }, SubClickListener { run{ viewModel.subAnItemToList(it)}})
+        Log.i("ho","oncreateaView")
+
+
+        val viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
+        binding.lifecycleOwner=this
+
+        val adapter=Adapter(AddClickListener{ run { viewModel.apply { addAnItemToList(it) }  } }, SubClickListener { run{ viewModel.subAnItemToList(it)}})
         binding.adapter=adapter
-        viewModel.fetchContacts()
+
         viewModel.foodList.observe(viewLifecycleOwner, Observer {
-            adapter.setData(it)
+            adapter.addHeaderAndSubmitList(it)
         })
+        binding.P2B.setOnClickListener {
+            this.findNavController().navigate(R.id.action_home2_to_cart)
+        }
 
 
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 

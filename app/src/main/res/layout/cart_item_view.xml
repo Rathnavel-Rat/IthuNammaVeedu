@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="cart"
+            type="com.example.ithunammaveedu.fragments.homefrag.FoodOrderData" />
+        <variable
+            name="addclicklistener"
+            type="com.example.ithunammaveedu.fragments.cartFrag.AddClickListener" />
+        <variable
+            name="subclicklistener"
+            type="com.example.ithunammaveedu.fragments.cartFrag.SubClickListener" />
+        <variable
+            name="removeclicklistener"
+            type="com.example.ithunammaveedu.fragments.cartFrag.RemoveClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:weightSum="5"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+
+                <ImageView
+                    android:id="@+id/donut"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_donut_small_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="4"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/row"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/fname"
+                    android:layout_width="86dp"
+                    android:layout_height="46dp"
+                    android:text="@{cart.name}"
+                    android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        app:quantity="@{cart}"
+                        android:width="30dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        app:total="@{cart}"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="285dp"
+                    android:layout_height="59dp"
+                    android:layout_below="@id/row"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="Remove"
+                        android:onClick="@{()->removeclicklistener.onClick(cart)}"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="+"
+                        android:onClick="@{()->addclicklistener.onClick(cart)}"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="-"
+                        android:onClick="@{()->subclicklistener.onClick(cart)}"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

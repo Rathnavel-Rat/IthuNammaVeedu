@@ -18,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_home)
+
         navController=this.findNavController(R.id.myNavHostFragment)
         drawerLayout=binding.drawerLayout
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)

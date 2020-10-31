@@ -33,15 +33,17 @@
         android:id="@+id/phone"
         android:layout_width="229dp"
         android:layout_height="46dp"
-        android:hint="phone"
+        android:hint="@string/phone"
+        android:maxLength="10"
+        android:inputType="number"
         android:text="@{viewModel.phone}"
        />
 
     <EditText
         android:layout_width="224dp"
-        android:id="@+id/address"
         android:layout_height="139dp"
-        android:hint="ADDRESSS"
+        android:hint="@string/addresss"
+        android:id="@+id/address"
         android:text="@{viewModel.address}"
         />
 
@@ -49,7 +51,7 @@
         android:id="@+id/save_user_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/save" />
 </LinearLayout>
 
 

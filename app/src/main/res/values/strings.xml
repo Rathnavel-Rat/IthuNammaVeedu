@@ -1,6 +1,14 @@
 <resources>
-    <string name="app_name">IthuNammaVeedu</string>
+    <string name="app_name">INV</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="rupees" >\u20B9</string>
+    <string name="save">Save</string>
+    <string name="addresss">ADDRESSS</string>
+    <string name="address1">Address</string>
+    <string name="phone">phone</string>
+    <string name="proccedtobuy">ProccedToBuy</string>
+    <string name="placeorder">placeOrder</string>
 </resources>

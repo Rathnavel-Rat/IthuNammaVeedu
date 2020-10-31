@@ -20,7 +20,7 @@
         android:label="yourInfo" />
     <fragment
         android:id="@+id/cart"
-        android:name="com.example.ithunammaveedu.fragments.cart"
+        android:name="com.example.ithunammaveedu.fragments.cartFrag.cart"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
