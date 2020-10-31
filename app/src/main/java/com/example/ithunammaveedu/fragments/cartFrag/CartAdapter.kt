@@ -10,7 +10,7 @@ class CartAdapter(var foodList: ArrayList<FoodOrderData>, val itemAddClickListen
     var list: ArrayList<FoodOrderData> = foodList
     fun setDaa(lists:ArrayList<FoodOrderData>){
         list=lists
-        println("poojaadapter $list")
+        println("poojasarswathi $list")
         notifyDataSetChanged()
     }
 

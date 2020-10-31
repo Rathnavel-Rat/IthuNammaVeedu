@@ -28,7 +28,6 @@ class cart : Fragment() {
         val adapter=CartAdapter(dummy_data,AddClickListener { run{viewModel.increamentCartItem(it)} },SubClickListener{ run{ viewModel.decreamentCartItem(it)} }, RemoveClickListener { run { viewModel.removeAnFromitem(it) }  })
         binding.adapter=adapter
         viewModel.foodCart.observe(viewLifecycleOwner, Observer {
-            println("pooja $it")
             adapter.setDaa(it)
 
         })
