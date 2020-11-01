@@ -38,8 +38,8 @@ class history : Fragment() {
         return binding.root
     }
     fun cancelItem(id:String){
-        var uid=FirebaseAuth.getInstance().currentUser!!.uid
-        var db=FirebaseDatabase.getInstance().reference.child("Orders").child(uid)
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        FirebaseDatabase.getInstance().reference.child("Orders").child(uid).child(id).removeValue()
     }
 
 

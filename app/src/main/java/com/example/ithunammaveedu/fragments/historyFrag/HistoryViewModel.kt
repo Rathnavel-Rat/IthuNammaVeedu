@@ -24,13 +24,12 @@ class HistoryViewModel :ViewModel(){
             override fun onCancelled(error: DatabaseError) {
             }
             override fun onDataChange(snapshot: DataSnapshot) {
+                arrayList.removeAll(arrayList.asIterable())
                for(data in snapshot.children ) {
                    val c = data.getValue(PlaceOrder::class.java)
-                   val d =HistoryItem(snapId = snapshot.key!!,dataItems = c!!)
+                   val d =HistoryItem(snapId = data.key!!,dataItems = c!!)
                    arrayList.add(d)
                    _orderDetails.value=arrayList
-
-
                }
             }
 
