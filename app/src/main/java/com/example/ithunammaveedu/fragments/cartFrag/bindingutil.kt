@@ -15,3 +15,9 @@ fun TextView.setTotal(item:FoodOrderData){
     item.apply { text=item.Total.toString() }
 
 }
+
+@BindingAdapter("cartTotal")
+fun TextView.setTotal(item:Int){
+    item.apply { text="placeOrder"+item.toString() }
+
+}

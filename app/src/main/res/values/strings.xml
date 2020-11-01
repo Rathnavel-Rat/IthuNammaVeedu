@@ -11,4 +11,5 @@
     <string name="phone">phone</string>
     <string name="proccedtobuy">ProccedToBuy</string>
     <string name="placeorder">placeOrder</string>
+    <string name="inr"> \u0020  \u20B9 %s</string>
 </resources>

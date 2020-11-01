@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/history"
-        android:name="com.example.ithunammaveedu.fragments.history"
+        android:name="com.example.ithunammaveedu.fragments.historyFrag.history"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
 </navigation>

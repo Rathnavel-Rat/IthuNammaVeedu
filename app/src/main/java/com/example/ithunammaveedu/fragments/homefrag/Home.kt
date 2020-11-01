@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -20,13 +21,13 @@ import com.google.firebase.database.ValueEventListener
 
 class Home : Fragment() {
    lateinit var binding:FragmentHomeBinding
-
+    lateinit var viewModel: FragViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         Log.i("ho","oncreateaView")
 
 
-        val viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
+        viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         binding.lifecycleOwner=this
 
         val adapter=Adapter(AddClickListener{ run { viewModel.apply { addAnItemToList(it) }  } }, SubClickListener { run{ viewModel.subAnItemToList(it)}})
@@ -35,9 +36,15 @@ class Home : Fragment() {
         viewModel.foodList.observe(viewLifecycleOwner, Observer {
             adapter.addHeaderAndSubmitList(it)
         })
+
+        viewModel.enableButton.observe(viewLifecycleOwner, Observer {
+            binding.P2B.isEnabled=it
+        })
         binding.P2B.setOnClickListener {
             this.findNavController().navigate(R.id.action_home2_to_cart)
         }
+
+
 
 
         setHasOptionsMenu(true)
@@ -50,6 +57,9 @@ class Home : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.clear->{  }
+        }
         return NavigationUI.onNavDestinationSelected(item,requireView().findNavController()) ||    super.onOptionsItemSelected(item)
     }
 

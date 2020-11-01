@@ -13,16 +13,28 @@ class FragViewModel:ViewModel(){
   private var _foodList=MutableLiveData<ArrayList<Food>>()
     val  foodList:LiveData<ArrayList<Food>>
        get() = _foodList
-    val _foodCart=MutableLiveData<ArrayList<FoodOrderData>>()
+   private val _foodCart=MutableLiveData<ArrayList<FoodOrderData>>()
     val foodCart:LiveData<ArrayList<FoodOrderData>>
        get() = _foodCart
+
+    private var _total_price= MutableLiveData<Int>()
+    val total_price: LiveData<Int>
+            get()=_total_price
+
+    private  var _enableButton=MutableLiveData<Boolean>()
+    val enableButton:LiveData<Boolean>
+        get() = _enableButton
+
 
     var foodOrderList= ArrayList<FoodOrderData>()//got in cart fragment
 
     init{
+        _enableButton.value=false
         val database = FirebaseDatabase.getInstance().reference.child("Food")
         database.addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) {
+
+            }
             override fun onDataChange(snapshot: DataSnapshot) {
                 val fetchlist=ArrayList<Food>()
                 for(data in snapshot.children){
@@ -32,6 +44,7 @@ class FragViewModel:ViewModel(){
                 _foodList.value=fetchlist
             }
         })
+
     }
 
     fun addAnItemToList(food: Food){
@@ -42,13 +55,13 @@ class FragViewModel:ViewModel(){
         if(getItem!=null){
             getItem.quantity+=1
             getItem.Total=getItem.quantity*food.cost
-            println("jio ${foodOrderList}List")
         }
         else{
             val orderItem=FoodOrderData(name = food.foodName,quantity=1,Total =(food.cost) )
             foodOrderList.add(orderItem)
         }
-
+        setCartTotal()
+        isEmpty()
 
     }
     fun subAnItemToList(food: Food){
@@ -67,28 +80,63 @@ class FragViewModel:ViewModel(){
             getItem.quantity-=1;
             getItem.Total=getItem.quantity*food.cost
         }
+        setCartTotal()
+        isEmpty()
+
     }
     fun setCartItems(){
         _foodCart.value=foodOrderList
     }
-    fun removeAnFromitem(food:FoodOrderData){
+    fun removeAnCartitem(food:FoodOrderData){
         val k= foodList.value!!.find { it.foodName==food.name }
         k!!.initial=0;
         foodOrderList.remove(foodOrderList.find{it.name==food.name})
         _foodCart.value=foodOrderList
+        setCartTotal()
+        isEmpty()
+
 
     }
     fun increamentCartItem(food:FoodOrderData){
         val k= foodList.value!!.find { it.foodName==food.name }
         addAnItemToList(k!!)
         _foodCart.value=foodOrderList
+        setCartTotal()
+        isEmpty()
+
+
     }
     fun decreamentCartItem(food:FoodOrderData){
         val k=foodList.value!!.find { it.foodName==food.name }
         subAnItemToList(k!!)
         _foodCart.value=foodOrderList
+        setCartTotal()
+        isEmpty()
+
+
 
     }
+
+    fun setCartTotal(){
+        var tot:Int=0
+        if(foodOrderList.isEmpty()){
+            tot=0
+        }
+        else{
+        foodOrderList.forEach {
+           tot+= it.Total
+        }
+        }
+        _total_price.value=tot
+    }
+
+
+
+    private fun isEmpty(){
+        _enableButton.value = !foodOrderList.isEmpty()
+    }
+
+
 }
 
 data class FoodOrderData(

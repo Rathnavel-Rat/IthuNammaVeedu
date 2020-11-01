@@ -9,46 +9,34 @@
          type="com.example.ithunammaveedu.fragments.homefrag.Adapter" />
  </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="653dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:adapter="@{adapter}"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="-16dp" />
+         />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.021887826" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.93" />
 
     <Button
         android:id="@+id/P2B"
-        android:layout_width="398dp"
-        android:layout_height="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="@string/proccedtobuy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_alignParentBottom="true"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+</RelativeLayout>
 </layout>

@@ -8,7 +8,7 @@ import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
 
 class CartAdapter(var foodList: ArrayList<FoodOrderData>, val itemAddClickListener: AddClickListener, val itemSubClickListener: SubClickListener, val removeClickListener: RemoveClickListener) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     var list: ArrayList<FoodOrderData> = foodList
-    fun setDaa(lists:ArrayList<FoodOrderData>){
+    fun setData(lists:ArrayList<FoodOrderData>){
         list=lists
         notifyDataSetChanged()
     }
