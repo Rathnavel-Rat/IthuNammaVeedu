@@ -27,6 +27,7 @@ class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: C
         fun bind(order: HistoryItem, action:CancelClickListener){
             binding.orderdata=order
             binding.cancelorder=action
+
         }
     }
 }

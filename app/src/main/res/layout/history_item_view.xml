@@ -13,6 +13,9 @@
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
+    android:elevation="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="@dimen/cardview_default_elevation"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -20,17 +23,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <TextView
                 android:id="@+id/order_date_tv"
                 android:layout_width="49dp"
+                android:layout_marginLeft="30dp"
                 android:layout_height="wrap_content"
-                android:text="Date:" />
+                android:text="Date:"
+                android:layout_marginStart="30dp" />
 
             <TextView
                 android:id="@+id/order_date"
@@ -47,8 +50,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:id="@+id/order_address_tv"
-                android:text="Address:" />
+                android:text="Address:"
+                android:layout_marginLeft="30dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,8 +68,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/order_amount_tv"
+                android:layout_marginStart="30dp"
                 android:text="Amount:"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_toRightOf="@+id/order_amount_tv"
@@ -80,7 +87,9 @@
                 android:id="@+id/order_phone_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="phone:" />
+                android:layout_marginStart="30dp"
+                android:text="phone:"
+                android:layout_marginLeft="30dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_toRightOf="@+id/order_phone_tv"
@@ -96,8 +105,10 @@
             <TextView
                 android:id="@+id/order_status_tv"
                 android:layout_width="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_height="wrap_content"
-                android:text="status:" />
+                android:text="status:"
+                android:layout_marginLeft="30dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_toRightOf="@+id/order_status_tv"
@@ -109,6 +120,7 @@
 
         <Button
             android:layout_width="match_parent"
+            android:id="@+id/order_but"
             android:layout_height="wrap_content"
             android:onClick="@{()->cancelorder.onClick(orderdata.snapId)}"
             android:text="Cancel Order" />

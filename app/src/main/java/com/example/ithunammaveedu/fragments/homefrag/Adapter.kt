@@ -19,6 +19,7 @@ class Adapter(private val itemAddClickListener: AddClickListener, private val it
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
+
     fun addHeaderAndSubmitList(list: ArrayList<Food>?) {
         adapterScope.launch {
             val items = when (list) {

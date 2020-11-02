@@ -13,8 +13,8 @@
         android:theme="@style/AppTheme"
         tools:targetApi="q">
         <activity android:name=".home.HomeActivity"
-
-            />
+            android:windowSoftInputMode="adjustPan"
+        />
         <activity android:name=".Starter.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

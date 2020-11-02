@@ -14,7 +14,7 @@
             type="com.example.ithunammaveedu.fragments.homefrag.SubClickListener" />
     </data>
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="13dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -46,7 +46,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:singleLine="false"
-                    android:maxLines="1"
                     android:scrollbars="none"
                     android:scrollHorizontally="false"
                     android:textStyle="bold"
@@ -73,9 +72,10 @@
 
                 <Button
                     android:id="@+id/add_button"
-                    android:layout_width="56dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
                     android:onClick= "@{()->subclicklistener.onClick(food)}"
                     android:text="-" />
 
@@ -93,12 +93,12 @@
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
                     android:layout_toRightOf="@+id/cost_view"
                     android:onClick="@{()->addclicklistener.onClick(food)}"
 
                     android:text="+" />
             </RelativeLayout>
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

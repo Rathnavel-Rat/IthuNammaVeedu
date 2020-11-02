@@ -7,17 +7,12 @@ import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
 
 @BindingAdapter("quantity")
 fun TextView.setQuantity(item:FoodOrderData){
-    item.apply { text=resources.getString(R.string.rupees)+item.quantity.toString() }
+    item.apply { text=item.quantity.toString() }
 
 }
 @BindingAdapter("total")
 fun TextView.setTotal(item:FoodOrderData){
-    item.apply { text=item.Total.toString() }
+    item.apply { text=resources.getString(R.string.rupees)+item.Total.toString() }
 
 }
 
-@BindingAdapter("cartTotal")
-fun TextView.setTotal(item:Int){
-    item.apply { text="placeOrder"+item.toString() }
-
-}

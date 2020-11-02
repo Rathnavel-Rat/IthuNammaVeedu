@@ -18,13 +18,16 @@ class HistoryViewModel :ViewModel(){
 
 
     init {
-        var arrayList=ArrayList<HistoryItem>()
+
         val db=FirebaseDatabase.getInstance().reference.child("Orders").child(FirebaseAuth.getInstance().currentUser!!.uid)
         db.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
             }
             override fun onDataChange(snapshot: DataSnapshot) {
-                arrayList.removeAll(arrayList.asIterable())
+                var arrayList=ArrayList<HistoryItem>()
+                if (!snapshot.hasChildren()){
+                    _orderDetails.value=arrayList
+                }
                for(data in snapshot.children ) {
                    val c = data.getValue(PlaceOrder::class.java)
                    val d =HistoryItem(snapId = data.key!!,dataItems = c!!)

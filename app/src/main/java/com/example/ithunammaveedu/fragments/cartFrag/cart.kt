@@ -50,7 +50,7 @@ class cart : Fragment() {
         viewModel.foodCart.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
             if(dummy_data.isEmpty()){
-                dummy_data.addAll(it) //for history
+                dummy_data.addAll(it) //for history these are used in  place order function given below
             }
             else{
                 dummy_data.removeAll(dummy_data)
@@ -68,11 +68,13 @@ class cart : Fragment() {
             if(it==false) {
                 binding.imageView.visibility = View.VISIBLE
                 binding.textView.visibility = View.VISIBLE
+                binding.PlaceOrder.visibility=View.GONE
             }
             else{
 
                 binding.imageView.visibility = View.GONE
                 binding.textView.visibility = View.GONE
+                binding.PlaceOrder.visibility=View.VISIBLE
 
             }        })
 

@@ -33,6 +33,7 @@ class history : Fragment() {
         viewModel.orderDetails.observe(viewLifecycleOwner, Observer {
             adapter.list=it
             adapter.notifyDataSetChanged()
+
         })
 
         return binding.root
