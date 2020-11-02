@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.databinding.FragmentCartBinding
 import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
@@ -85,9 +87,9 @@ class cart : Fragment() {
             dialog.show()
             val button=dialog.findViewById<Button>(R.id.done)
             button.setOnClickListener {
-                val intent=Intent(requireContext(),HomeActivity::class.java)
-                startActivity(intent)
-
+                requireActivity().viewModelStore.clear();
+                this.findNavController().navigate(R.id.action_cart_to_home2)
+                dialog.hide()
             }
 
         }
@@ -114,7 +116,7 @@ class cart : Fragment() {
                 placeOrder.phoneNumber=info.first().phone
                 placeOrder.total= total.toString()
                 placeOrder.foodItem=dummy_data
-                placeOrder.status="Placing Order"
+                placeOrder.status="Placing Order ...."
                 FirebaseDatabase.getInstance().reference.child("Orders").child(uid).push().setValue(placeOrder)
 
 

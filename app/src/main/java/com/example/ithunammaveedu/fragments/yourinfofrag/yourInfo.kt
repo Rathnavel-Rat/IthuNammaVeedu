@@ -24,7 +24,7 @@ class yourInfo : Fragment() {
         binding.viewModel=viewModel
         binding.saveUserInfo.setOnClickListener {
             val name=binding.name.text.toString()
-            val phone=binding.phone.text.toString()
+            val phone=binding.phonenumber.text.toString()
             val address=binding.address.text.toString()
             viewModel.updatedValue(name,phone,address)
 

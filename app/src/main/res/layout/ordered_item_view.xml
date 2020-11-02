@@ -5,17 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="cart"
+            name="ordered"
             type="com.example.ithunammaveedu.fragments.homefrag.FoodOrderData" />
-        <variable
-            name="addclicklistener"
-            type="com.example.ithunammaveedu.fragments.cartFrag.AddClickListener" />
-        <variable
-            name="subclicklistener"
-            type="com.example.ithunammaveedu.fragments.cartFrag.SubClickListener" />
-        <variable
-            name="removeclicklistener"
-            type="com.example.ithunammaveedu.fragments.cartFrag.RemoveClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -50,53 +41,36 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:id="@+id/row"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/fname"
-                    android:layout_width="86dp"
-                    android:layout_height="46dp"
-                    android:text="@{cart.name}"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/fname"
+                        android:layout_width="86dp"
+                        android:layout_height="46dp"
+                        android:text="@{ordered.name}"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
-                        app:quantity="@{cart}"
+                        app:quantity="@{ordered}"
                         android:width="30dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="match_parent"
-                        app:total="@{cart}"
+                        app:total="@{ordered}"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="285dp"
-                    android:layout_height="59dp"
-                    android:layout_below="@id/row"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:text="Remove"
-                        android:onClick="@{()->removeclicklistener.onClick(cart)}"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:text="+"
-                        android:onClick="@{()->addclicklistener.onClick(cart)}"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:text="-"
-                        android:onClick="@{()->subclicklistener.onClick(cart)}"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
             </RelativeLayout>
 
-            </LinearLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="adapter"
+            type="com.example.ithunammaveedu.fragments.historyItems.HistoryItemsAdapter" />
+    </data>
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.historyItems.historyItems">
+    <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+        android:adapter="@{adapter}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/ordereditem_recyclerView"
+       android:layout_height="match_parent"/>
+</FrameLayout>
+
+</layout>

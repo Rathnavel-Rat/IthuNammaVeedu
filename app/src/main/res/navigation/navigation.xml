@@ -22,10 +22,26 @@
         android:id="@+id/cart"
         android:name="com.example.ithunammaveedu.fragments.cartFrag.cart"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cart_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
     <fragment
         android:id="@+id/history"
         android:name="com.example.ithunammaveedu.fragments.historyFrag.history"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_history_to_historyItems"
+            app:destination="@id/historyItems" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyItems"
+        android:name="com.example.ithunammaveedu.fragments.historyItems.historyItems"
+        android:label="historyItems" >
+        <argument
+            android:name="items"
+            app:argType="com.example.ithunammaveedu.fragments.homefrag.FoodOrderData[]" />
+    </fragment>
 </navigation>

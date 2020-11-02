@@ -146,10 +146,11 @@
                             android:text="MobileNumber"
                             android:textColor="@color/colorPurple"
                             android:textSize="14sp"
+                            android:maxLength="10"
                             android:textStyle="bold" />
 
                         <EditText
-                            android:id="@+id/phone"
+                            android:id="@+id/phonenumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvnumber"
@@ -158,13 +159,15 @@
                             android:drawablePadding="30dp"
                             android:maxLength="10"
                             android:padding="10dp"
-                            android:text="@{viewModel.phone}" />
+                            android:inputType="number"
+                            android:text="@{viewModel.phone}"
+                            tools:ignore="TextFields" />
 
                         <TextView
                             android:id="@+id/tvaddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/phone"
+                            android:layout_below="@+id/phonenumber"
                             android:layout_margin="15dp"
                             android:text="Address"
                             android:textColor="@color/colorPurple"

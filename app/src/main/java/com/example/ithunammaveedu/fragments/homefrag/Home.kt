@@ -30,7 +30,6 @@ class Home : Fragment() {
         val adapter=Adapter(AddClickListener{ run { viewModel.apply { addAnItemToList(it) }  } }, SubClickListener { run{ viewModel.subAnItemToList(it)}})
         binding.adapter=adapter
         binding.homeRecyclerView.addItemDecoration(DividerItemDecoration(this.activity, LinearLayout.VERTICAL))
-
         viewModel.foodList.observe(viewLifecycleOwner, Observer {
             adapter.addHeaderAndSubmitList(it)
         })

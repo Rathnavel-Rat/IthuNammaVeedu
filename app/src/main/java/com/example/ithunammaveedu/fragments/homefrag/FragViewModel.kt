@@ -1,5 +1,6 @@
 package com.example.ithunammaveedu.fragments.homefrag
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.parcel.Parcelize
 
 class FragViewModel:ViewModel(){
 
@@ -138,9 +140,5 @@ class FragViewModel:ViewModel(){
 
 
 }
-
-data class FoodOrderData(
-    var name:String="",
-    var quantity:Int=0,
-    var Total:Int=0
-)
+@Parcelize
+data class FoodOrderData(var name:String="", var quantity:Int=0, var Total:Int=0): Parcelable
