@@ -21,9 +21,6 @@ class Home : Fragment() {
     lateinit var viewModel: FragViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
-        Log.i("ho","oncreateaView")
-
-
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         binding.lifecycleOwner=this
 
@@ -33,7 +30,6 @@ class Home : Fragment() {
         viewModel.foodList.observe(viewLifecycleOwner, Observer {
             adapter.addHeaderAndSubmitList(it)
         })
-
         viewModel.enableButton.observe(viewLifecycleOwner, Observer {
             binding.P2B.isEnabled=it
         })
