@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home2_to_cart"
-            app:destination="@id/cart" />
+            app:destination="@id/cart"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/yourInfo"
@@ -34,7 +38,10 @@
         tools:layout="@layout/fragment_history" >
         <action
             android:id="@+id/action_history_to_historyItems"
-            app:destination="@id/historyItems" />
+            app:destination="@id/historyItems"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/historyItems"

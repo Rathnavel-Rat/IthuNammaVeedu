@@ -1,4 +1,4 @@
-package com.example.ithunammaveedu.fragments.homefrag
+package com.example.ithunammaveedu.fragments.tabHome
 
 import android.widget.ImageView
 import android.widget.TextView

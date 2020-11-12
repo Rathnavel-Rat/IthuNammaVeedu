@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.ithunammaveedu.fragments.tabHome.Food
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,8 +28,17 @@ class FragViewModel:ViewModel(){
     val enableButton:LiveData<Boolean>
         get() = _enableButton
 
+    private  var _tab_headers= MutableLiveData<ArrayList<String>>()
+    val tab_headers:LiveData<ArrayList<String>>
+        get() =_tab_headers
+
+
+
+
+
 
     var foodOrderList= ArrayList<FoodOrderData>()//got in cart fragment
+
 
     init{
         _enableButton.value=false
@@ -39,15 +49,20 @@ class FragViewModel:ViewModel(){
             }
             override fun onDataChange(snapshot: DataSnapshot) {
                 val fetchlist=ArrayList<Food>()
+                val headers=ArrayList<String>()
                 for(data in snapshot.children){
                     val c=data.getValue(Food::class.java)
                     fetchlist.add(c!!)
                 }
                 _foodList.value=fetchlist
+                    fetchlist.groupBy { it.category }.forEach{
+                    headers.add(it.key) }
+                _tab_headers.value=headers
             }
         })
 
     }
+
 
     fun addAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }
@@ -115,8 +130,6 @@ class FragViewModel:ViewModel(){
         setCartTotal()
         isEmpty()
 
-
-
     }
 
     fun setCartTotal(){
@@ -131,7 +144,6 @@ class FragViewModel:ViewModel(){
         }
         _total_price.value=tot
     }
-
 
 
     private fun isEmpty(){

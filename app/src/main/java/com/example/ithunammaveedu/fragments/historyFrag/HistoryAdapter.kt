@@ -19,7 +19,7 @@ class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: C
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val order= list[position]
+        val order= list[position]
         holder.bind(order,cancelClickListener,itemShowClickListener)
     }
 
