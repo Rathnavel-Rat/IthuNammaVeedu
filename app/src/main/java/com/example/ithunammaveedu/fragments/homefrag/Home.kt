@@ -3,7 +3,6 @@ package com.example.ithunammaveedu.fragments.homefrag
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,9 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.ithunammaveedu.MainActivity
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.Starter.LoginActivity
 import com.example.ithunammaveedu.databinding.FragmentHomeBinding
@@ -24,7 +21,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.*
 
 
 class Home : Fragment() {
@@ -34,7 +30,7 @@ class Home : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
-        viewPagerAdapter=ViewPagerAdapter(requireActivity().supportFragmentManager,lifecycle,0)
+        viewPagerAdapter=ViewPagerAdapter(childFragmentManager,lifecycle,0, emptyArray())
 
         binding.lifecycleOwner=this
 
@@ -46,15 +42,18 @@ class Home : Fragment() {
         }
         binding.pager.adapter= viewPagerAdapter
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
-        viewModel.tab_headers.observe(this.requireActivity(), Observer {
-            viewPagerAdapter.sizeChanged(it.size)})
+
+
+        viewModel.foodHashMap.observe(this.requireActivity(), Observer {
+            viewPagerAdapter.sizeChanged(it.keys.size,it.keys.toTypedArray())
+
+        })
 
 
         TabLayoutMediator(binding.tabLayout,binding.pager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                viewModel.tab_headers.observe(this.requireActivity(), Observer {
-                    tab.text=it[position]
-
+                viewModel.foodHashMap.observe(this.requireActivity(), Observer {
+                    tab.text=it.keys.toTypedArray()[position]
                 })
             }).attach()
 
@@ -89,26 +88,27 @@ class Home : Fragment() {
 
 
 }
-
-    inner class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle,  size:Int): FragmentStateAdapter(fm,lifecycle){
-        var size=size
-        override fun getItemCount(): Int{
-            return size
-        }
-        fun sizeChanged(size:Int){
-            this.size=size
-            notifyDataSetChanged()
-        }
-
-        override fun createFragment(position: Int): Fragment {
-            var fragment:Fragment?=null
-            fragment= BlankFragment()
-            val Bundle=Bundle()
-            Bundle.putInt("position",position)
-            fragment.arguments=Bundle
-
-            return fragment
-        }
-
+}
+class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle,size:Int,keys: Array<String>): FragmentStateAdapter(fm,lifecycle){
+    var size=size
+    var keys=keys
+    override fun getItemCount(): Int{
+        return size
     }
+    fun sizeChanged(size: Int, keys: Array<String>){
+        this.size=size
+        this.keys=keys
+        notifyDataSetChanged()
+    }
+
+
+    override fun createFragment(position: Int): Fragment {
+        var fragment:Fragment?=null
+        fragment= BlankFragment()
+        val Bundle=Bundle()
+        Bundle.putString("keyValue",keys[position])
+        fragment.arguments=Bundle
+        return fragment
+    }
+
 }

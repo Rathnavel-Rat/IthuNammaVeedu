@@ -86,7 +86,8 @@
                     android:paddingTop="10dp"
                     android:layout_toRightOf="@+id/add_button"
                     app:initial="@{food}"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
 
                 <Button
                     android:id="@+id/sub_but"

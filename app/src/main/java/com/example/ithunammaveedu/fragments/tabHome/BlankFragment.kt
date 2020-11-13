@@ -21,18 +21,21 @@ class BlankFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         databinding=DataBindingUtil.inflate(inflater,R.layout.fragment_blank, container, false)
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
-        val dummy_data= emptyList<Food>()
+
+         val dummy_data= emptyList<Food>()
          val adapter= Adapter(dummy_data, AddClickListener { run { viewModel.apply { addAnItemToList(it) } } },
              SubClickListener { run { viewModel.subAnItemToList(it) } })
          databinding.adapter=adapter
          databinding.homeRecyclerView.addItemDecoration(DividerItemDecoration(this.activity, LinearLayout.VERTICAL))
-         viewModel.foodList.observe(viewLifecycleOwner, Observer {
-             val b = arguments
-             val s = b!!.getInt("position")
-             val j=it.groupBy { it.category }.values.toTypedArray()
-             adapter.setData(j[s])
 
+
+         viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
+             val args = arguments
+             val key = args!!.getString("keyValue")
+             adapter.setData(it[key]!!)
          })
+
+
 
         return databinding.root
 

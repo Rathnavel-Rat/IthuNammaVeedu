@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.databinding.FragmentHistoryItemsBinding
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class historyItems : Fragment() {
     lateinit var binding:FragmentHistoryItemsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

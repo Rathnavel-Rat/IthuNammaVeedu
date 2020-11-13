@@ -6,6 +6,9 @@
         <variable
             name="adapter"
             type="com.example.ithunammaveedu.fragments.cartFrag.CartAdapter" />
+        <variable
+            name="viewModel"
+            type="com.example.ithunammaveedu.fragments.homefrag.FragViewModel" />
     </data>
 
     <RelativeLayout
@@ -17,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
-            android:adapter="@{adapter}"
+            app:adapter="@{adapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
            />
 
