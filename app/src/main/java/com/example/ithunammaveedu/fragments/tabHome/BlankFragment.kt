@@ -22,8 +22,8 @@ class BlankFragment : Fragment() {
         databinding=DataBindingUtil.inflate(inflater,R.layout.fragment_blank, container, false)
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
 
-         val dummy_data= emptyList<Food>()
-         val adapter= Adapter(dummy_data, AddClickListener { run { viewModel.apply { addAnItemToList(it) } } },
+         val dummydata= emptyList<Food>()
+         val adapter= Adapter(dummydata, AddClickListener { run { viewModel.apply { addAnItemToList(it) } } },
              SubClickListener { run { viewModel.subAnItemToList(it) } })
          databinding.adapter=adapter
          databinding.homeRecyclerView.addItemDecoration(DividerItemDecoration(this.activity, LinearLayout.VERTICAL))

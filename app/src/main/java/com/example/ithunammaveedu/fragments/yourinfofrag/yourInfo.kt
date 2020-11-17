@@ -18,7 +18,6 @@ class yourInfo : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_your_info, container, false)
         binding.lifecycleOwner = this
-       // requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         viewModel=ViewModelProvider(this).get(YourinfoViewModel::class.java)
         viewModel.getValues()
         binding.viewModel=viewModel

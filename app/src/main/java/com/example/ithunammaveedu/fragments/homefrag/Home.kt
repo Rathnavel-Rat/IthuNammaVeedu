@@ -30,6 +30,7 @@ class Home : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
+
         viewPagerAdapter=ViewPagerAdapter(childFragmentManager,lifecycle,0, emptyArray())
 
         binding.lifecycleOwner=this
@@ -45,7 +46,8 @@ class Home : Fragment() {
 
 
         viewModel.foodHashMap.observe(this.requireActivity(), Observer {
-            viewPagerAdapter.sizeChanged(it.keys.size,it.keys.toTypedArray())
+            binding.progressBar.visibility=View.GONE
+            viewPagerAdapter.dataChanged(it.keys.size,it.keys.toTypedArray())
 
         })
 
@@ -89,13 +91,12 @@ class Home : Fragment() {
 
 }
 }
-class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle,size:Int,keys: Array<String>): FragmentStateAdapter(fm,lifecycle){
-    var size=size
-    var keys=keys
+class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle, private var size:Int, private var keys: Array<String>): FragmentStateAdapter(fm,lifecycle){
+
     override fun getItemCount(): Int{
         return size
     }
-    fun sizeChanged(size: Int, keys: Array<String>){
+    fun dataChanged(size: Int, keys: Array<String>){
         this.size=size
         this.keys=keys
         notifyDataSetChanged()
