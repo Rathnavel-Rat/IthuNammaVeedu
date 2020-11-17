@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home2"
         android:name="com.example.ithunammaveedu.fragments.homefrag.Home"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home2_to_cart"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/cart"
         android:name="com.example.ithunammaveedu.fragments.cartFrag.cart"
-        android:label="fragment_cart"
+        android:label="Cart"
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cart_to_home2"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/history"
         android:name="com.example.ithunammaveedu.fragments.historyFrag.history"
-        android:label="fragment_history"
+        android:label="History"
         tools:layout="@layout/fragment_history" >
         <action
             android:id="@+id/action_history_to_historyItems"

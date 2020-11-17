@@ -64,12 +64,10 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intent = Intent(this, HomeActivity::class.java)
                      val auth=FirebaseAuth.getInstance().currentUser!!
-                    println("${auth.uid } jio")
-                     val data= user_Info(auth.email!!,if (auth.phoneNumber==null) " "  else  auth.phoneNumber!!,auth.displayName!!,"")
+                     val data= user_Info(auth.email!!,if (auth.phoneNumber==null) ""  else  auth.phoneNumber!!,auth.displayName!!,"")
                     FirebaseDatabase.getInstance().reference.child("userInfo").child(auth.uid).setValue(data)
                     startActivity(intent)
                     finish()
-
                 } else {
 
                     Toast.makeText(this, "Authentication Failed.", Toast.LENGTH_SHORT).show()

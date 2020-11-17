@@ -21,6 +21,7 @@ import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
 import com.example.ithunammaveedu.fragments.homefrag.FragViewModel
 import com.example.ithunammaveedu.fragments.yourinfofrag.user_Info
 import com.example.ithunammaveedu.home.HomeActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -41,8 +42,6 @@ class cart : Fragment() {
     lateinit var  dummy_data:ArrayList<FoodOrderData>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_cart, container, false)
-
-
         binding.lifecycleOwner=this
         val viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         viewModel.setCartItems()
@@ -83,6 +82,7 @@ class cart : Fragment() {
             }        })
 
         binding.PlaceOrder.setOnClickListener {
+
             placeOrderAction()
             val dialog=Dialog(this.requireContext())
             dialog.setContentView(R.layout.popup)
@@ -109,7 +109,6 @@ class cart : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.getValue(user_Info::class.java)?.let { info.add(it) }
                 val Date= DateFormat.getDateInstance().format(Date()).toString()
@@ -120,8 +119,6 @@ class cart : Fragment() {
                 placeOrder.foodItem=dummy_data
                 placeOrder.status="Placing Order ...."
                 FirebaseDatabase.getInstance().reference.child("Orders").child(uid).push().setValue(placeOrder)
-
-
             }
 
         })
