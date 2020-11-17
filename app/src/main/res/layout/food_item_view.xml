@@ -5,13 +5,13 @@
     <data>
         <variable
             name="food"
-            type="com.example.ithunammaveedu.fragments.homefrag.Food" />
+            type="com.example.ithunammaveedu.fragments.tabHome.Food" />
         <variable
             name="addclicklistener"
-            type="com.example.ithunammaveedu.fragments.homefrag.AddClickListener" />
+            type="com.example.ithunammaveedu.fragments.tabHome.AddClickListener" />
         <variable
             name="subclicklistener"
-            type="com.example.ithunammaveedu.fragments.homefrag.SubClickListener" />
+            type="com.example.ithunammaveedu.fragments.tabHome.SubClickListener" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -86,7 +86,8 @@
                     android:paddingTop="10dp"
                     android:layout_toRightOf="@+id/add_button"
                     app:initial="@{food}"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
 
                 <Button
                     android:id="@+id/sub_but"

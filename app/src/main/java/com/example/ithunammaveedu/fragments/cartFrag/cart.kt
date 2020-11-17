@@ -49,6 +49,7 @@ class cart : Fragment() {
          dummy_data= ArrayList<FoodOrderData>()
         val adapter=CartAdapter(dummy_data,AddClickListener { run{viewModel.increamentCartItem(it)} },SubClickListener{ run{ viewModel.decreamentCartItem(it)} }, RemoveClickListener { run { viewModel.removeAnCartitem(it) }  })
         binding.adapter=adapter
+
         viewModel.foodCart.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
             if(dummy_data.isEmpty()){
@@ -60,6 +61,7 @@ class cart : Fragment() {
             }
 
         })
+
         viewModel.total_price.observe(viewLifecycleOwner, Observer {
             binding.PlaceOrder.text="plcaeOrder:"+ resources.getString(R.string.rupees)+"$it"
             total=it

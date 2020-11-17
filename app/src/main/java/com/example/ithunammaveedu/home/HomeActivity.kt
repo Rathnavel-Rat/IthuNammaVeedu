@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_home)
-
+        binding.lifecycleOwner=this
         navController=this.findNavController(R.id.myNavHostFragment)
         drawerLayout=binding.drawerLayout
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,drawerLayout)
     }
+
 
 
 

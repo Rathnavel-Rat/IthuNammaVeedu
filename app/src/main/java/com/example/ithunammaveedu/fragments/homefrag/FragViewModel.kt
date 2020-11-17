@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.ithunammaveedu.fragments.tabHome.Food
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -12,10 +13,11 @@ import kotlinx.android.parcel.Parcelize
 
 class FragViewModel:ViewModel(){
 
-  private var _foodList=MutableLiveData<ArrayList<Food>>()
+  private var _foodList=MutableLiveData<ArrayList<Food>>() //fetch from firebase and used in cart for finding food
     val  foodList:LiveData<ArrayList<Food>>
        get() = _foodList
-   private val _foodCart=MutableLiveData<ArrayList<FoodOrderData>>()
+
+   private val _foodCart=MutableLiveData<ArrayList<FoodOrderData>>()//for cart changes, initialized at creating car using setCartItem()
     val foodCart:LiveData<ArrayList<FoodOrderData>>
        get() = _foodCart
 
@@ -28,7 +30,18 @@ class FragViewModel:ViewModel(){
         get() = _enableButton
 
 
+    private var _foodHashMap=MutableLiveData<MutableMap<String,List<Food>>>() //categorizing value and used for updating value {(add,sub) as setItem}
+    val foodHashMap:LiveData<MutableMap<String,List<Food>>>
+     get() = _foodHashMap
+
+
+
+
+
+
+
     var foodOrderList= ArrayList<FoodOrderData>()//got in cart fragment
+
 
     init{
         _enableButton.value=false
@@ -44,16 +57,22 @@ class FragViewModel:ViewModel(){
                     fetchlist.add(c!!)
                 }
                 _foodList.value=fetchlist
+                _foodHashMap.value= fetchlist.groupBy { it.category }.toMutableMap()
+
             }
         })
 
     }
 
+
     fun addAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }
-        val setItem=foodList.value!!.find { it.foodName==food.foodName }
+        val setItem= _foodHashMap.value?.get(food.category)!!.find { it.foodName==food.foodName }
+
         setItem!!.initial+=1
-        _foodList.value=foodList.value
+        _foodHashMap.value=foodHashMap.value
+
+
         if(getItem!=null){
             getItem.quantity+=1
             getItem.Total=getItem.quantity*food.cost
@@ -68,13 +87,13 @@ class FragViewModel:ViewModel(){
     }
     fun subAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }
-        val setItem=foodList.value!!.find { it.foodName==food.foodName }
+        val setItem= _foodHashMap.value?.get(food.category)!!.find { it.foodName==food.foodName }
         if(setItem!!.initial==0){
             setItem.initial=0}
         else{
             setItem.initial-=1
         }
-        _foodList.value=foodList.value
+        _foodHashMap.value=foodHashMap.value
         if(getItem!=null && getItem.quantity==1){
             foodOrderList.remove(foodOrderList.find{it.name==food.foodName})
         }
@@ -84,11 +103,13 @@ class FragViewModel:ViewModel(){
         }
         setCartTotal()
         isEmpty()
-
     }
+
+
     fun setCartItems(){
         _foodCart.value=foodOrderList
     }
+
     fun removeAnCartitem(food:FoodOrderData){
         val k= foodList.value!!.find { it.foodName==food.name }
         k!!.initial=0;
@@ -97,7 +118,6 @@ class FragViewModel:ViewModel(){
         setCartTotal()
         isEmpty()
 
-
     }
     fun increamentCartItem(food:FoodOrderData){
         val k= foodList.value!!.find { it.foodName==food.name }
@@ -105,8 +125,6 @@ class FragViewModel:ViewModel(){
         _foodCart.value=foodOrderList
         setCartTotal()
         isEmpty()
-
-
     }
     fun decreamentCartItem(food:FoodOrderData){
         val k=foodList.value!!.find { it.foodName==food.name }
@@ -114,8 +132,6 @@ class FragViewModel:ViewModel(){
         _foodCart.value=foodOrderList
         setCartTotal()
         isEmpty()
-
-
 
     }
 
@@ -131,7 +147,6 @@ class FragViewModel:ViewModel(){
         }
         _total_price.value=tot
     }
-
 
 
     private fun isEmpty(){

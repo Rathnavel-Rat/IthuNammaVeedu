@@ -9,6 +9,10 @@
         android:visible="true"
         app:showAsAction="always" />
     <item
-        android:id="@+id/clear"
-        android:title="clear" />
+        android:id="@+id/signout"
+        android:icon="@drawable/ic_do_not_disturb_on_black_24dp"
+        android:title="signout" />
+    <item
+        android:id="@+id/tab"
+        android:title="tab" />
 </menu>
