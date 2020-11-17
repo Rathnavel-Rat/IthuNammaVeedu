@@ -12,4 +12,6 @@
     <color name="colorPurple">#A130FF</color>
     <color name="colorPurpleT">#64a130ff</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorBiscuit">#ffe97c</color>
+    <color name="colorBlack">#000000</color>
 </resources>
