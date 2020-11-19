@@ -12,4 +12,15 @@
     <color name="colorPurple">#A130FF</color>
     <color name="colorPurpleT">#64a130ff</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorBiscuit">#ffe97c</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorG1">#e65c00</color>
+    <color name="colorG2">#fd9423</color>
+    <color name="colorG3">#A5EA8A00</color>
+    <color name="colorG4">#FF512F</color>
+    <color name="colorBrown">#bf360c</color>
+    <color name="colorDarkRed">#d50000</color>
+    <color name="colorYellow">#ffeb3b</color>
+    <color name="colorRed">#f44336</color>
+    <color name="colorLimeGreen">#c6ff00</color>
 </resources>
