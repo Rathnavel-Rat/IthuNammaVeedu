@@ -26,7 +26,7 @@ class history : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_history, container, false)
         viewModel=ViewModelProvider(this).get(HistoryViewModel::class.java)
-        requireActivity().title="History"
+
         binding.lifecycleOwner=this
         val dummy_data=ArrayList<HistoryItem>()
         adapter=HistoryAdapter(dummy_data,CancelClickListener{ cancelItem(it) }, ItemShowClickListener { this.findNavController().navigate(historyDirections.actionHistoryToHistoryItems(

@@ -1,4 +1,7 @@
-package com.example.ithunammaveedu.fragments.homefrag
+package com.example.ithunammaveedu.fragments.tabHome
+
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 data class Food(
     var id:Int=0,

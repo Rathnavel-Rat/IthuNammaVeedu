@@ -2,7 +2,9 @@ package com.example.ithunammaveedu.fragments.cartFrag
 
 //import android.icu.text.SimpleDateFormat
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +23,7 @@ import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
 import com.example.ithunammaveedu.fragments.homefrag.FragViewModel
 import com.example.ithunammaveedu.fragments.yourinfofrag.user_Info
 import com.example.ithunammaveedu.home.HomeActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -41,14 +44,13 @@ class cart : Fragment() {
     lateinit var  dummy_data:ArrayList<FoodOrderData>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_cart, container, false)
-
-
         binding.lifecycleOwner=this
         val viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         viewModel.setCartItems()
          dummy_data= ArrayList<FoodOrderData>()
         val adapter=CartAdapter(dummy_data,AddClickListener { run{viewModel.increamentCartItem(it)} },SubClickListener{ run{ viewModel.decreamentCartItem(it)} }, RemoveClickListener { run { viewModel.removeAnCartitem(it) }  })
         binding.adapter=adapter
+
         viewModel.foodCart.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
             if(dummy_data.isEmpty()){
@@ -60,6 +62,7 @@ class cart : Fragment() {
             }
 
         })
+
         viewModel.total_price.observe(viewLifecycleOwner, Observer {
             binding.PlaceOrder.text="plcaeOrder:"+ resources.getString(R.string.rupees)+"$it"
             total=it
@@ -81,22 +84,30 @@ class cart : Fragment() {
             }        })
 
         binding.PlaceOrder.setOnClickListener {
-            placeOrderAction()
-            val dialog=Dialog(this.requireContext())
-            dialog.setContentView(R.layout.popup)
-            dialog.show()
-            val button=dialog.findViewById<Button>(R.id.done)
-            button.setOnClickListener {
-                requireActivity().viewModelStore.clear();
-                this.findNavController().navigate(R.id.action_cart_to_home2)
-                dialog.hide()
+            val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+            if(!sharedPreferences.getBoolean("firstTime",false)){
+                this.findNavController().navigate(R.id.action_cart_to_yourInfo)
+            }
+            else {
+                placeOrderAction()
+                dialog()
             }
 
         }
         return binding.root
     }
 
-
+    fun dialog(){
+        val dialog=Dialog(this.requireContext())
+        dialog.setContentView(R.layout.popup)
+        dialog.show()
+        val button=dialog.findViewById<Button>(R.id.done)
+        button.setOnClickListener {
+            requireActivity().viewModelStore.clear();
+            this.findNavController().navigate(R.id.action_cart_to_home2)
+            dialog.hide()
+        }
+    }
 
     fun placeOrderAction(){
         val placeOrder=PlaceOrder()
@@ -107,7 +118,6 @@ class cart : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.getValue(user_Info::class.java)?.let { info.add(it) }
                 val Date= DateFormat.getDateInstance().format(Date()).toString()
@@ -118,8 +128,6 @@ class cart : Fragment() {
                 placeOrder.foodItem=dummy_data
                 placeOrder.status="Placing Order ...."
                 FirebaseDatabase.getInstance().reference.child("Orders").child(uid).push().setValue(placeOrder)
-
-
             }
 
         })

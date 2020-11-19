@@ -1,4 +1,4 @@
-package com.example.ithunammaveedu.fragments.homefrag
+package com.example.ithunammaveedu.fragments.tabHome
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,7 +22,5 @@ fun TextView.setInitial(food: Food){
 @BindingAdapter("imageUrl")
 fun setImageUrl(view: ImageView, url: String) {
     val image="https://drive.google.com/uc?export=download&id="+url.split("/")[5]
-    Glide.with(view).load(image).apply( RequestOptions().override(600, 200)).into(view)
-
-
+    Glide.with(view).load(image).apply( RequestOptions().override(200, 400)).into(view)
 }

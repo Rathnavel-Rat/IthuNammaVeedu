@@ -8,11 +8,18 @@
     <fragment
         android:id="@+id/home2"
         android:name="com.example.ithunammaveedu.fragments.homefrag.Home"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home2_to_cart"
-            app:destination="@id/cart" />
+            app:destination="@id/cart"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home2_to_yourInfo"
+            app:destination="@id/yourInfo" />
     </fragment>
     <fragment
         android:id="@+id/yourInfo"
@@ -21,20 +28,26 @@
     <fragment
         android:id="@+id/cart"
         android:name="com.example.ithunammaveedu.fragments.cartFrag.cart"
-        android:label="fragment_cart"
+        android:label="Cart"
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cart_to_home2"
             app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_cart_to_yourInfo"
+            app:destination="@id/yourInfo" />
     </fragment>
     <fragment
         android:id="@+id/history"
         android:name="com.example.ithunammaveedu.fragments.historyFrag.history"
-        android:label="fragment_history"
+        android:label="History"
         tools:layout="@layout/fragment_history" >
         <action
             android:id="@+id/action_history_to_historyItems"
-            app:destination="@id/historyItems" />
+            app:destination="@id/historyItems"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/historyItems"

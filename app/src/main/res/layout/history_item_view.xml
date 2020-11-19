@@ -23,7 +23,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/gradient_color">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorBlack"
                 android:layout_height="wrap_content"
                 android:text="Date:"
                 android:layout_marginStart="30dp" />
@@ -47,6 +48,7 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
+
                 android:text="@{orderdata.dataItems.date}"
                 android:layout_toRightOf="@id/order_date_tv"
                 android:layout_marginStart="46dp"
@@ -62,7 +64,7 @@
                 android:layout_marginStart="30dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorBlack"
                 android:id="@+id/order_address_tv"
                 android:text="Address:"
                 android:layout_marginLeft="30dp" />
@@ -90,7 +92,7 @@
                 android:text="Amount:"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorBlack"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp" />
             <TextView
@@ -116,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorBlack"
                 android:layout_marginStart="30dp"
                 android:text="phone:"
                 android:layout_marginLeft="30dp" />
@@ -144,7 +146,7 @@
                 android:layout_marginStart="30dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorGreen"
+                android:textColor="@color/colorBlack"
                 android:layout_height="wrap_content"
                 android:text="status:"
                 android:layout_marginLeft="30dp" />
@@ -167,7 +169,8 @@
         <Button
             android:layout_width="match_parent"
             android:id="@+id/order_but"
-            android:textColor="@color/colorPrimary"
+            android:background="@color/colorRed"
+            android:textColor="@color/colorBlack"
             android:layout_height="wrap_content"
 
             android:onClick="@{()->cancelorder.onClick(orderdata.snapId)}"

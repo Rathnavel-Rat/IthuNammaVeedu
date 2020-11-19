@@ -31,7 +31,7 @@ class YourinfoViewModel: ViewModel() {
              override fun onDataChange(dataSnapshot: DataSnapshot) {
                  info= dataSnapshot.getValue(user_Info::class.java)!!
                  _username.value=info.name
-                 _address.value=info.address
+                 _address.value= info.address.toString()
                  _mail.value=info.mail
                  _phone.value=info.phone
 

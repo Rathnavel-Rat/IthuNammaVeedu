@@ -5,13 +5,13 @@
     <data>
         <variable
             name="food"
-            type="com.example.ithunammaveedu.fragments.homefrag.Food" />
+            type="com.example.ithunammaveedu.fragments.tabHome.Food" />
         <variable
             name="addclicklistener"
-            type="com.example.ithunammaveedu.fragments.homefrag.AddClickListener" />
+            type="com.example.ithunammaveedu.fragments.tabHome.AddClickListener" />
         <variable
             name="subclicklistener"
-            type="com.example.ithunammaveedu.fragments.homefrag.SubClickListener" />
+            type="com.example.ithunammaveedu.fragments.tabHome.SubClickListener" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,32 +25,33 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="89dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="1">
 
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:imageUrl="@{food.image}"
                      />
             </RelativeLayout>
             <RelativeLayout
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:singleLine="false"
+                    android:hint="Food Name"
                     android:scrollbars="none"
                     android:scrollHorizontally="false"
-                    android:textStyle="bold"
-                    android:hint="Food Name"
-                    android:text="@{food.foodName}" />
+                    android:singleLine="false"
+                    android:text="@{food.foodName}"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -62,13 +63,13 @@
                     android:singleLine="false"
                     android:scrollHorizontally="false"
                     app:cost="@{food}"
-                    android:textSize="20sp" /></RelativeLayout>
+                    android:textSize="18sp" /></RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1">
+                android:layout_weight="2">
 
                 <Button
                     android:id="@+id/add_button"
@@ -86,7 +87,8 @@
                     android:paddingTop="10dp"
                     android:layout_toRightOf="@+id/add_button"
                     app:initial="@{food}"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
 
                 <Button
                     android:id="@+id/sub_but"

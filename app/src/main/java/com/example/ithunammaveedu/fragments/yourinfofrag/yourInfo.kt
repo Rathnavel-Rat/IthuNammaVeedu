@@ -1,5 +1,7 @@
 package com.example.ithunammaveedu.fragments.yourinfofrag
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.databinding.FragmentYourInfoBinding
+import com.google.android.material.snackbar.Snackbar
 
 class yourInfo : Fragment() {
     lateinit var  viewModel: YourinfoViewModel
@@ -18,16 +21,23 @@ class yourInfo : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_your_info, container, false)
         binding.lifecycleOwner = this
-       // requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         viewModel=ViewModelProvider(this).get(YourinfoViewModel::class.java)
         viewModel.getValues()
         binding.viewModel=viewModel
-        binding.saveUserInfo.setOnClickListener {
-            val name=binding.name.text.toString()
-            val phone=binding.phonenumber.text.toString()
-            val address=binding.address.text.toString()
-            viewModel.updatedValue(name,phone,address)
 
+        binding.saveUserInfo.setOnClickListener {
+            if(binding.name.text.toString().isEmpty() && binding.phonenumber.text.toString().isEmpty() && binding.address.text.toString().isEmpty() ){
+                Snackbar.make(this.requireView(),"please Fill All",Snackbar.LENGTH_SHORT).show()
+            }
+            else {
+                viewModel.updatedValue(
+                    binding.name.text.toString(),
+                    binding.phonenumber.text.toString(),
+                    binding.address.text.toString()
+                )
+                val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+                sharedPreferences.edit().putBoolean("firstTime",true).apply()
+            }
         }
         return binding.root
 
