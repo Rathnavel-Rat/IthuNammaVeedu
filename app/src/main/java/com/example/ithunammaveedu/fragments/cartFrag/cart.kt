@@ -2,7 +2,9 @@ package com.example.ithunammaveedu.fragments.cartFrag
 
 //import android.icu.text.SimpleDateFormat
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -82,23 +84,30 @@ class cart : Fragment() {
             }        })
 
         binding.PlaceOrder.setOnClickListener {
-
-            placeOrderAction()
-            val dialog=Dialog(this.requireContext())
-            dialog.setContentView(R.layout.popup)
-            dialog.show()
-            val button=dialog.findViewById<Button>(R.id.done)
-            button.setOnClickListener {
-                requireActivity().viewModelStore.clear();
-                this.findNavController().navigate(R.id.action_cart_to_home2)
-                dialog.hide()
+            val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+            if(!sharedPreferences.getBoolean("firstTime",false)){
+                this.findNavController().navigate(R.id.action_cart_to_yourInfo)
+            }
+            else {
+                placeOrderAction()
+                dialog()
             }
 
         }
         return binding.root
     }
 
-
+    fun dialog(){
+        val dialog=Dialog(this.requireContext())
+        dialog.setContentView(R.layout.popup)
+        dialog.show()
+        val button=dialog.findViewById<Button>(R.id.done)
+        button.setOnClickListener {
+            requireActivity().viewModelStore.clear();
+            this.findNavController().navigate(R.id.action_cart_to_home2)
+            dialog.hide()
+        }
+    }
 
     fun placeOrderAction(){
         val placeOrder=PlaceOrder()
