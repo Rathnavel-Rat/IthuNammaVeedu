@@ -17,6 +17,9 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home2_to_yourInfo"
+            app:destination="@id/yourInfo" />
     </fragment>
     <fragment
         android:id="@+id/yourInfo"
@@ -30,6 +33,9 @@
         <action
             android:id="@+id/action_cart_to_home2"
             app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_cart_to_yourInfo"
+            app:destination="@id/yourInfo" />
     </fragment>
     <fragment
         android:id="@+id/history"
