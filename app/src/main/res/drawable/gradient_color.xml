@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape android:shape="oval">
+        <shape>
             <gradient
-                android:angle="45"
                 android:startColor="@color/colorG1"
-                android:endColor="@color/colorG2"
-                />
+                android:centerColor="@color/colorG2"
+                android:endColor="@color/colorG3"
+                android:angle="90"/>
         </shape>
     </item>
 </selector>
