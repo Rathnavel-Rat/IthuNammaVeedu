@@ -57,4 +57,13 @@
             android:name="items"
             app:argType="com.example.ithunammaveedu.fragments.homefrag.FoodOrderData[]" />
     </fragment>
+    <fragment
+        android:id="@+id/searchList"
+        android:name="com.example.ithunammaveedu.fragments.search.searchList"
+        android:label="fragment_search_list"
+        tools:layout="@layout/fragment_search_list" >
+        <action
+            android:id="@+id/action_searchList_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
 </navigation>
