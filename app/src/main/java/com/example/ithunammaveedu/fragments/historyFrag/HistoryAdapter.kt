@@ -1,12 +1,24 @@
 package com.example.ithunammaveedu.fragments.historyFrag
 
+import DiffCallback
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ithunammaveedu.databinding.HistoryItemViewBinding
 import com.example.ithunammaveedu.fragments.homefrag.FoodOrderData
 
+
 class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: CancelClickListener,var itemShowClickListener: ItemShowClickListener):RecyclerView.Adapter<HistoryAdapter.ViewHolder>(){
+    init {
+        setHasStableIds(false)
+    }
+    fun setData(model:ArrayList<HistoryItem>){
+        val diffResult = DiffUtil.calculateDiff(DiffCallback(list,model))
+        list.clear()
+        list.addAll(model)
+        diffResult.dispatchUpdatesTo(this)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
