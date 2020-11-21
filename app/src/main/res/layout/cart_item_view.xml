@@ -46,6 +46,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_weight="4"
+                android:background="@drawable/gradient_color"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -78,18 +79,21 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:text="Remove"
+                        android:background="@color/colorRed"
                         android:onClick="@{()->removeclicklistener.onClick(cart)}"
                         android:layout_height="wrap_content" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:text="+"
+                        android:background="@color/colorDarkRed"
                         android:onClick="@{()->addclicklistener.onClick(cart)}"
                         android:layout_height="wrap_content" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:text="-"
+                        android:background="@color/colorGreen"
                         android:onClick="@{()->subclicklistener.onClick(cart)}"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

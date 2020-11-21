@@ -23,8 +23,33 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
                 android:id="@+id/pager"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+
+            </androidx.viewpager2.widget.ViewPager2>
         </LinearLayout>
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_above="@id/P2B"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorG1"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_restaurant_menu_black_24dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
         <Button
             android:id="@+id/P2B"
             android:layout_width="match_parent"
@@ -33,4 +58,5 @@
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
+
 </layout>
