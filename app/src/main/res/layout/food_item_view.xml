@@ -18,6 +18,7 @@
         app:cardElevation="10dp"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:background="@color/colorYellow"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:weightSum="5"
@@ -76,7 +77,8 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorBlack"
+                    android:background="@color/colorDarkRed"
                     android:onClick= "@{()->subclicklistener.onClick(food)}"
                     android:text="-" />
 
@@ -95,10 +97,10 @@
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/colorPrimary"
+                    android:background="@color/colorGreen"
+                    android:textColor="@color/colorBlack"
                     android:layout_toRightOf="@+id/cost_view"
                     android:onClick="@{()->addclicklistener.onClick(food)}"
-
                     android:text="+" />
             </RelativeLayout>
         </LinearLayout>
