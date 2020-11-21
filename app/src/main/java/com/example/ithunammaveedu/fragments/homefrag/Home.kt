@@ -84,7 +84,11 @@ class Home : Fragment() {
                 auth.signOut()
                 startActivity(intent)
                 this.requireActivity().finish()
-        }}
+        }
+        R.id.search->{
+            this@Home.findNavController().navigate(R.id.action_home2_to_searchList)
+        }
+        }
 
         return NavigationUI.onNavDestinationSelected(item,requireView().findNavController()) ||    super.onOptionsItemSelected(item)
 

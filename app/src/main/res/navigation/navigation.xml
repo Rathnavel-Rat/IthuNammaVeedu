@@ -20,6 +20,10 @@
         <action
             android:id="@+id/action_home2_to_yourInfo"
             app:destination="@id/yourInfo" />
+        <action
+            android:id="@+id/action_home2_to_searchList"
+            app:destination="@id/searchList"
+            app:enterAnim="@anim/slide_up" />
     </fragment>
     <fragment
         android:id="@+id/yourInfo"
@@ -64,6 +68,8 @@
         tools:layout="@layout/fragment_search_list" >
         <action
             android:id="@+id/action_searchList_to_home2"
-            app:destination="@id/home2" />
+            app:destination="@id/home2"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down" />
     </fragment>
 </navigation>
