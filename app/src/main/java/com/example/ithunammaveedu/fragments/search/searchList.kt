@@ -22,30 +22,17 @@ class searchList : Fragment() {
     lateinit var viewModel:FragViewModel
     lateinit var binding:FragmentSearchListBinding
     lateinit var adapter: Adapter
-    override fun onCreateView(inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater, R.layout.fragment_search_list, container, false)
         viewModel= ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
-         adapter= Adapter(AddClickListener { run { viewModel.apply { addAnItemToList(it) ;} } },
-             SubClickListener { run { viewModel.subAnItemToList(it) } })
+         adapter= Adapter(AddClickListener { run { viewModel.addAnItemToList(it); notifyAdapter()}},
+                          SubClickListener { run { viewModel.subAnItemToList(it);notifyAdapter() } })
+
         binding.adapter=adapter
-
-        binding.searchRecycler.addItemDecoration(
-            DividerItemDecoration(
-                this.activity,
-                LinearLayout.VERTICAL
-            )
-        )
-
+        binding.searchRecycler.addItemDecoration(DividerItemDecoration(this.activity, LinearLayout.VERTICAL))
         viewModel.foodHashMap.observeOnce(this.requireActivity(), Observer { it ->
             adapter.setitem(it.values.flatten())
         })
-
-
-
-
 
         setHasOptionsMenu(true)
         return binding.root
@@ -63,11 +50,7 @@ class searchList : Fragment() {
                 return false
             }
             override fun onQueryTextChange(query: String): Boolean {
-                viewModel.foodHashMap.observe(this@searchList.viewLifecycleOwner, Observer {
-                    adapter.addHeaderAndSubmitList(it.values.flatten())
-                    adapter.filter.filter(query)
-                })
-
+                adapter.filter.filter(query)
                 return false
             }
         })
@@ -78,7 +61,13 @@ class searchList : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    fun notifyAdapter(){
+        adapter.notifyDataSetChanged()
+    }
+
 }
+
+
 
 fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
     observe(lifecycleOwner, object : Observer<T> {

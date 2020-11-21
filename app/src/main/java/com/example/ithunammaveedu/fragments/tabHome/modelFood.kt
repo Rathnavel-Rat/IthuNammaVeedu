@@ -12,4 +12,5 @@ data class Food(
     var category:String="",
     var type:String="",
     var available:Boolean=false
+
 )

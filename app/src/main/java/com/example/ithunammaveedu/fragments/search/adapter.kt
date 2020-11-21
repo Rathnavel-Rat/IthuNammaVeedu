@@ -112,6 +112,7 @@ class Adapter(private val itemAddClickListener: AddClickListener, private val it
                 return ViewHolder(binding)
             }
         }
+
     }
 
 
@@ -150,6 +151,7 @@ class FoodItemDiffutilCallback : DiffUtil.ItemCallback<DataItem>() {
     override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem.id == newItem.id
     }
+
     override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
         return oldItem == newItem
     }
