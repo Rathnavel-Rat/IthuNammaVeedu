@@ -9,6 +9,7 @@ data class Food(
     var cost:Int=0,
     var initial:Int=0,
     var image:String="",
-    var category:String=""
-
+    var category:String="",
+    var type:String="",
+    var available:Boolean=false
 )
