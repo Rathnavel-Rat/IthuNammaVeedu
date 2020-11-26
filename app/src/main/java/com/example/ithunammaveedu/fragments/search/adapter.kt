@@ -29,6 +29,7 @@ class Adapter(private val itemAddClickListener: AddClickListener, private val it
 
     fun setitem(items:List<Food>){
         this.list= items as ArrayList<Food>
+        addHeaderAndSubmitList(items)
     }
     fun addHeaderAndSubmitList(list: List<Food>) {
         adapterScope.launch {

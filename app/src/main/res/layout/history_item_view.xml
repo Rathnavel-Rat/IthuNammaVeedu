@@ -11,6 +11,12 @@
         <variable
             name="passitems"
             type="com.example.ithunammaveedu.fragments.historyFrag.ItemShowClickListener" />
+       <variable
+           name="buttontext"
+           type="String" />
+        <variable
+            name="enablebutton"
+            type="Boolean" />
     </data>
 
 
@@ -168,10 +174,10 @@
             android:layout_width="match_parent"
             android:id="@+id/order_but"
             android:textColor="@color/colorPrimary"
+            android:enabled="@{enablebutton}"
             android:layout_height="wrap_content"
-
             android:onClick="@{()->cancelorder.onClick(orderdata.snapId)}"
-            android:text="Cancel Order" /></RelativeLayout>
+            android:text="@{buttontext}" /></RelativeLayout>
 
 
 
