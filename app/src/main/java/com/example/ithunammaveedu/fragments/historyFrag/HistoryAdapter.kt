@@ -40,7 +40,17 @@ class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: C
             binding.orderdata=order
             binding.cancelorder=action
             binding.passitems=itemShowClickListener
+            binding.buttontext =  buttonText(order)
+            binding.enablebutton =order.dataItems.status!="accepted"
+            binding.executePendingBindings()
 
+        }
+        private fun buttonText(order: HistoryItem):String{
+            return when {
+                order.dataItems.status == "accepted" -> "Thank u"
+                order.dataItems.status != "cancelled" -> "CANCEL ORDER"
+                else -> "DELETE ORDER"
+            }
         }
     }
 }

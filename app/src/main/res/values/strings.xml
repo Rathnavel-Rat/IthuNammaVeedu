@@ -13,4 +13,6 @@
     <string name="inr"> \u0020  \u20B9 %s</string>
     <string name="ithu_n_namma_n_veedu">ITHU \n NAMMA \n VEEDU</string>
     <string name="cart_is_empty">Cart is Empty :(</string>
+    <string name="veg">veg</string>
+    <string name="nonveg">NonVeg</string>
 </resources>

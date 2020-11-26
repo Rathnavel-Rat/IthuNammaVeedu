@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="fabHandler"
+            type="com.example.ithunammaveedu.fragments.homefrag.Home.FabHandler" />
+    </data>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -30,25 +35,69 @@
         </LinearLayout>
         <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_above="@id/P2B"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentStart="true">
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/veg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/vegButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorG1"
+                    android:onClick="@{fabHandler::onVegClick}"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_veg_food"
+                   />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/veg"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/vegButton"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/vegButton" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:id="@+id/nonveg"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/nonvegButton"
+                    app:srcCompat="@drawable/ic_non_veg_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{fabHandler::onNonVegClick}"
+                    android:background="@color/colorG1"
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorG1"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_restaurant_menu_black_24dp" />
-
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/nonveg"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/nonvegButton"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/nonvegButton" />
+                </RelativeLayout>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{fabHandler::onBaseFabClick}"
+                    android:background="@color/colorG1"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_restaurant_menu_black_24dp" />
             </LinearLayout>
+
         </RelativeLayout>
         <Button
             android:id="@+id/P2B"
