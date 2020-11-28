@@ -9,9 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -53,20 +51,14 @@ class Home : Fragment() {
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
 
 
-        viewModel.foodHashMap.observe(this.requireActivity(), Observer {
+        viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
             binding.progressBar.visibility = View.GONE
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
-
-        })
-
-
-        TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                viewModel.foodHashMap.observe(this.requireActivity(), Observer {
+            TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                     tab.text = it.keys.toTypedArray()[position]
-                })
             }).attach()
 
-
+        })
 
         setHasOptionsMenu(true)
         return binding.root
@@ -140,12 +132,7 @@ class Home : Fragment() {
 
 }
 
-class ViewPagerAdapter(
-    fm: FragmentManager,
-    lifecycle: Lifecycle,
-    private var size: Int,
-    private var keys: Array<String>
-): FragmentStateAdapter(fm, lifecycle){
+class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle, private var size: Int, private var keys: Array<String>): FragmentStateAdapter(fm, lifecycle){
 
     override fun getItemCount(): Int{
         return size
@@ -166,4 +153,12 @@ class ViewPagerAdapter(
         return fragment
     }
 
+}
+fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+    observe(lifecycleOwner, object : Observer<T> {
+        override fun onChanged(t: T?) {
+            observer.onChanged(t)
+            removeObserver(this)
+        }
+    })
 }

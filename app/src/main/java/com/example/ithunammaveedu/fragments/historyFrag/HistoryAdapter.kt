@@ -43,7 +43,6 @@ class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: C
             binding.buttontext =  buttonText(order)
             binding.enablebutton =order.dataItems.status!="accepted"
             binding.executePendingBindings()
-
         }
         private fun buttonText(order: HistoryItem):String{
             return when {
