@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ithunammaveedu">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".home.HomeActivity"
-            android:windowSoftInputMode="adjustPan"
-        />
+        <service
+            android:name=".fragments.service.notification"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".home.HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Starter.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
