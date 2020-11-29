@@ -32,7 +32,7 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/round_button"
             android:text="@string/placeorder"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorBlack" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -51,7 +51,7 @@
             android:layout_marginEnd="128dp"
             android:layout_marginRight="128dp"
             android:text="@string/cart_is_empty"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlack"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
              />
