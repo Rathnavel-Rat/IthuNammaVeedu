@@ -1,6 +1,7 @@
 package com.example.ithunammaveedu.home
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.databinding.ActivityHomeBinding
-import com.example.ithunammaveedu.fragments.yourinfofrag.yourInfo
+import com.example.ithunammaveedu.fragments.service.notification
 
 class HomeActivity : AppCompatActivity() {
     lateinit var drawerLayout:DrawerLayout
@@ -39,6 +40,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+    override fun onStop() {
+        startService(Intent(this,notification::class.java))
+        super.onStop()
+    }
 
+    override fun onPause() {
+        startService(Intent(this,notification::class.java))
+        super.onPause()
+    }
 
 }

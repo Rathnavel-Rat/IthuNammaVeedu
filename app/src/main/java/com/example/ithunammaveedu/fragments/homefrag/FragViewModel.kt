@@ -52,7 +52,11 @@ class FragViewModel:ViewModel(){
                     fetchlist.add(c!!)
                 }
                 _foodList.value=fetchlist
-                _foodHashMap.value= fetchlist.groupBy { it.category }.toMutableMap()
+
+                _foodHashMap.value= fetchlist.filter { it.available }.groupBy { it.category }.toMutableMap()
+
+
+
 
             }
         })
