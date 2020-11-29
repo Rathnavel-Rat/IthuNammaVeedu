@@ -57,7 +57,7 @@ class notification : Service() {
                     val d = HistoryItem(snapId = data.key!!,dataItems = c!!)
                     arrayList1.add(d)
                 }
-                val j=arrayList.minus(arrayList1)
+                val j=arrayList1.minus(arrayList)
                 println("hello")
                 j.forEach {
                     mNotificationManager.notify(0, builder(it.dataItems.status)!!.build())
