@@ -53,15 +53,15 @@ class Home : Fragment() {
         binding.pager.adapter= viewPagerAdapter
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack,null))
         }
         else{
-            binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack))
+                binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack))
+
         }
         binding.tabLayout.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
-        binding.tabLayout.background= ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
+        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
         viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
             binding.progressBar.visibility = View.GONE
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
