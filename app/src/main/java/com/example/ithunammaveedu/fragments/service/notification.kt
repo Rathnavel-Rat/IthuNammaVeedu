@@ -28,7 +28,9 @@ class notification : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createNotificationChannel()
         val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val db= FirebaseDatabase.getInstance().reference.child("Orders").child(FirebaseAuth.getInstance().currentUser!!.uid)
+        val firebaseAuth=FirebaseAuth.getInstance().currentUser
+        if(firebaseAuth!=null){
+        val db= FirebaseDatabase.getInstance().reference.child("Orders").child(firebaseAuth!!.uid)
         val arrayList=ArrayList<HistoryItem>()
         db.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
@@ -67,6 +69,7 @@ class notification : Service() {
             }
 
         })
+        }
 
         return START_STICKY
 
