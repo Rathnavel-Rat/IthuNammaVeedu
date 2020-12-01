@@ -20,13 +20,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.ithunammaveedu.R
 import com.example.ithunammaveedu.Starter.LoginActivity
 import com.example.ithunammaveedu.databinding.FragmentHomeBinding
+import com.example.ithunammaveedu.fragments.service.notification
 import com.example.ithunammaveedu.fragments.tabHome.BlankFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.properties.Delegates
 
 
 class Home : Fragment() {
@@ -100,6 +100,8 @@ class Home : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.signout -> {
+                val intentService = Intent(this.requireActivity(), notification::class.java)
+                 this.requireActivity().stopService(intentService)
                 val auth = FirebaseAuth.getInstance()
                 val intent = Intent(this.requireActivity(), LoginActivity::class.java)
                 val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
