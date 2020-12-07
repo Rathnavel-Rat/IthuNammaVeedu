@@ -61,7 +61,7 @@ class notification : Service() {
                 }
                 val j=arrayList1.minus(arrayList)
                 j.forEach {
-                    mNotificationManager.notify(0, builder(it.dataItems.status)!!.build())
+                    mNotificationManager.notify( Random.nextInt(0, 100), builder(it.dataItems.status)!!.build())
                 }
 
 
