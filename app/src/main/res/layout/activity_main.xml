@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:src="@drawable/splash"
         android:layout_centerInParent="true"
-        android:layout_height="200dp"/>
+        android:background="#FAEBAF"
+        android:layout_height="match_parent"/>
 
 
 

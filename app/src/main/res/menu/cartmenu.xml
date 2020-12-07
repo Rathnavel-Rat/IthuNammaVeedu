@@ -18,5 +18,5 @@
     <item
         android:id="@+id/signout"
         android:icon="@drawable/ic_do_not_disturb_on_black_24dp"
-        android:title="signout" />
+        android:title="Signout" />
 </menu>
