@@ -24,36 +24,38 @@
             android:layout_margin="16dp"
             android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-            <ImageView
-                android:layout_weight="1.8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:imageUrl="@{food.image}"
-                />
-
-
-            <LinearLayout
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:imageUrl="@{food.image}"
+                     />
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_weight="1.5"
                 android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Food Name"
                     android:scrollbars="none"
                     android:scrollHorizontally="false"
                     android:singleLine="false"
-                    android:textColor="#6E111B"
                     android:text="@{food.foodName}"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView2"
+                    android:layout_below="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Cost"
@@ -61,10 +63,7 @@
                     android:singleLine="false"
                     android:scrollHorizontally="false"
                     app:cost="@{food}"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-
+                    android:textSize="18sp" /></RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"

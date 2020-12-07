@@ -1,5 +1,7 @@
 package com.example.ithunammaveedu.fragments.yourinfofrag
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,7 +27,8 @@ class YourinfoViewModel: ViewModel() {
     val phone:LiveData<String>
       get() = _phone
     private  var info=user_Info()
-     fun getValues(){
+     fun getValues():String{
+         var name:String=""
          val database = FirebaseDatabase.getInstance().reference.child("userInfo").child(auth.uid)
          database.addValueEventListener(object : ValueEventListener {
              override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -34,14 +37,14 @@ class YourinfoViewModel: ViewModel() {
                  _address.value= info.address.toString()
                  _mail.value=info.mail
                  _phone.value=info.phone
-
+                  name=info.name
              }
 
              override fun onCancelled(error: DatabaseError) {
 
              }
          })
-
+      return  name
      }
     fun updatedValue(name:String,phone:String,address:String){
         val data= user_Info(auth.email!!,phone,name,address)

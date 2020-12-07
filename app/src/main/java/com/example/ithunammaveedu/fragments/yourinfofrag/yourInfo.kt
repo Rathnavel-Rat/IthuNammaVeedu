@@ -17,12 +17,17 @@ import com.google.android.material.snackbar.Snackbar
 
 class yourInfo : Fragment() {
     lateinit var  viewModel: YourinfoViewModel
+    lateinit var sharedPreferences: SharedPreferences
     lateinit var binding: FragmentYourInfoBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_your_info, container, false)
         binding.lifecycleOwner = this
         viewModel=ViewModelProvider(this).get(YourinfoViewModel::class.java)
-        viewModel.getValues()
+        sharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+        val name= viewModel.getValues()
+        sharedPreferences.edit().putString("username",name).apply()
+
+
         binding.viewModel=viewModel
 
         binding.saveUserInfo.setOnClickListener {
@@ -34,9 +39,13 @@ class yourInfo : Fragment() {
                     binding.name.text.toString(),
                     binding.phonenumber.text.toString(),
                     binding.address.text.toString()
+
                 )
-                val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+
                 sharedPreferences.edit().putBoolean("firstTime",true).apply()
+
+                sharedPreferences.edit().putString("username",binding.name.text.toString()).apply()
+
             }
         }
         return binding.root
