@@ -9,13 +9,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardCornerRadius="30dp"
-        app:cardBackgroundColor="@color/colorGreen1"
+        app:cardBackgroundColor="#fbe8a7"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="25dp"
-            android:background="@color/colorGreen1"
+            android:background="#f8e499"
             android:layout_marginBottom="25dp"
             android:layout_height="wrap_content">
             <TextView
@@ -23,6 +23,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textSize="25sp"
+                android:textColor="#681614"
                 android:textStyle="bold"
                 android:text="Order Completed"
                 android:fontFamily="@font/orbitron_medium"
@@ -35,6 +36,8 @@
                 android:layout_height="164dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
+                android:textColor="#681614"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_check_black_24dp"
                  />
@@ -47,11 +50,14 @@
                 android:fontFamily="@font/orbitron_medium"
                 android:layout_marginBottom="10dp"
                 android:text="Check History About your order and you can cancel your order in history page if you want"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#681614"/>
             <Button
                 android:layout_width="wrap_content"
                 android:text="ok"
+                android:textColor="#681614"
                 android:id="@+id/done"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/round_button"
                 android:layout_height="wrap_content"/>

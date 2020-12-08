@@ -6,14 +6,13 @@
     tools:context=".MainActivity">
 <ImageView
     android:layout_width="wrap_content"
-
     android:layout_centerInParent="true"
     android:layout_height="wrap_content"/>
     <ImageView
         android:layout_width="match_parent"
         android:src="@drawable/splash"
         android:layout_centerInParent="true"
-        android:background="#FAEBAF"
+        android:background="#fbebb1"
         android:layout_height="match_parent"/>
 
 

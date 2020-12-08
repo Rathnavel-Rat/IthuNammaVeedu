@@ -20,7 +20,7 @@
             android:layout_height="88dp"
             android:weightSum="5"
             android:layout_margin="16dp"
-            android:background="@drawable/gradient_color"
+            android:background="#dab485"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -50,7 +50,7 @@
                         android:fontFamily="@font/orbitron_medium"
                         android:layout_height="46dp"
                         android:text="@{ordered.name}"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="#681614"
                         android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
                         android:fontFamily="@font/orbitron_medium"
                         android:width="30dp"
                         android:textStyle="bold"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="#681614"
                         android:textSize="20sp"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="match_parent"
                         app:total="@{ordered}"
                         android:textStyle="bold"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="#681614"
                         android:fontFamily="@font/orbitron_medium"
                         android:textSize="20sp"
                         android:layout_height="wrap_content"/>
