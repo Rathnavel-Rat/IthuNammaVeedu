@@ -1,5 +1,6 @@
 package com.example.ithunammaveedu.Starter
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -65,6 +66,9 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, HomeActivity::class.java)
                      val auth=FirebaseAuth.getInstance().currentUser!!
                      val data= user_Info(auth.email!!,if (auth.phoneNumber==null) ""  else  auth.phoneNumber!!,auth.displayName!!,"")
+                    val sharedPreferences= this.getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
+                    sharedPreferences.edit().putString("username",auth.displayName).apply()
+
                     FirebaseDatabase.getInstance().reference.child("userInfo").child(auth.uid).setValue(data)
                     startActivity(intent)
                     finish()

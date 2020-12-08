@@ -35,11 +35,6 @@ class FragViewModel:ViewModel(){
      get() = _foodHashMap
 
 
-
-
-
-
-
     var foodOrderList= ArrayList<FoodOrderData>()//got in cart fragment
 
 
@@ -57,7 +52,11 @@ class FragViewModel:ViewModel(){
                     fetchlist.add(c!!)
                 }
                 _foodList.value=fetchlist
-                _foodHashMap.value= fetchlist.groupBy { it.category }.toMutableMap()
+
+                _foodHashMap.value= fetchlist.filter { it.available }.groupBy { it.category }.toMutableMap()
+
+
+
 
             }
         })
@@ -67,8 +66,7 @@ class FragViewModel:ViewModel(){
 
     fun addAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }
-        val setItem= _foodHashMap.value?.get(food.category)!!.find { it.foodName==food.foodName }
-
+        val setItem= _foodHashMap.value?.get(food.category)!!.find { it.foodName==food.foodName }//used in tabFrag
         setItem!!.initial+=1
         _foodHashMap.value=foodHashMap.value
 
@@ -88,11 +86,13 @@ class FragViewModel:ViewModel(){
     fun subAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }
         val setItem= _foodHashMap.value?.get(food.category)!!.find { it.foodName==food.foodName }
+
         if(setItem!!.initial==0){
             setItem.initial=0}
         else{
             setItem.initial-=1
         }
+        _foodList.value=foodList.value
         _foodHashMap.value=foodHashMap.value
         if(getItem!=null && getItem.quantity==1){
             foodOrderList.remove(foodOrderList.find{it.name==food.foodName})
@@ -151,6 +151,15 @@ class FragViewModel:ViewModel(){
 
     private fun isEmpty(){
         _enableButton.value = !foodOrderList.isEmpty()
+    }
+    fun clearAll(){
+        foodOrderList.clear()
+        _foodCart.value!!.removeAll(_foodCart.value!!.asIterable())
+        _total_price.value=0
+        _foodList.value!!.forEach {
+            it.initial=0
+        }
+        _enableButton.value=false
     }
 
 

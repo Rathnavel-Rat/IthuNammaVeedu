@@ -42,12 +42,15 @@ class cart : Fragment() {
     lateinit var binding:FragmentCartBinding
     var total by Delegates.notNull<Int>()
     lateinit var  dummy_data:ArrayList<FoodOrderData>
+    lateinit var viewModel:FragViewModel
+    lateinit var  sharedPreferences: SharedPreferences
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_cart, container, false)
         binding.lifecycleOwner=this
-        val viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
+        viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         viewModel.setCartItems()
-         dummy_data= ArrayList<FoodOrderData>()
+        dummy_data= ArrayList<FoodOrderData>()
+        sharedPreferences= this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
         val adapter=CartAdapter(dummy_data,AddClickListener { run{viewModel.increamentCartItem(it)} },SubClickListener{ run{ viewModel.decreamentCartItem(it)} }, RemoveClickListener { run { viewModel.removeAnCartitem(it) }  })
         binding.adapter=adapter
 
@@ -103,7 +106,7 @@ class cart : Fragment() {
         dialog.show()
         val button=dialog.findViewById<Button>(R.id.done)
         button.setOnClickListener {
-            requireActivity().viewModelStore.clear();
+            viewModel.clearAll()
             this.findNavController().navigate(R.id.action_cart_to_home2)
             dialog.hide()
         }
@@ -127,6 +130,7 @@ class cart : Fragment() {
                 placeOrder.total= total.toString()
                 placeOrder.foodItem=dummy_data
                 placeOrder.status="Placing Order ...."
+                placeOrder.name=sharedPreferences.getString("username","unknown")!!
                 FirebaseDatabase.getInstance().reference.child("Orders").child(uid).push().setValue(placeOrder)
             }
 

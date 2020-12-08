@@ -10,6 +10,7 @@ data class PlaceOrder(
     var address:String="",
     var phoneNumber:String="",
     var status:String="",
-    var foodItem:ArrayList<FoodOrderData> = arrayListOf()
+    var foodItem:ArrayList<FoodOrderData> = arrayListOf(),
+    var name:String=""
 )
 

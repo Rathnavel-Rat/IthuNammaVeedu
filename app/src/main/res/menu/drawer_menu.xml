@@ -6,8 +6,8 @@
         android:title="Home" />
     <item
         android:id="@+id/yourInfo"
-        android:title="your_Info" />
+        android:title="Your Info" />
     <item
         android:id="@+id/history"
-        android:title="History" />
+        android:title="Order History" />
 </menu>

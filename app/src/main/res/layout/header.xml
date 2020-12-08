@@ -17,9 +17,10 @@
     <TextView
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="@font/orbitron_medium"
         android:text="@{Headers}"
         android:textSize="20sp"
-        android:textColor="#fff"
+        android:textColor="#681614"
         android:layout_height="wrap_content"/>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

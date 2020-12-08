@@ -2,19 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ithunammaveedu">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_f_foreground"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_f_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".home.HomeActivity"
-            android:windowSoftInputMode="adjustPan"
-        />
+        <service
+            android:name=".fragments.service.notification"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".home.HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Starter.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

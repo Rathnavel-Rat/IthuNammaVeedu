@@ -11,6 +11,12 @@
         <variable
             name="passitems"
             type="com.example.ithunammaveedu.fragments.historyFrag.ItemShowClickListener" />
+       <variable
+           name="buttontext"
+           type="String" />
+        <variable
+            name="enablebutton"
+            type="Boolean" />
     </data>
 
 
@@ -23,8 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/gradient_color">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,20 +40,21 @@
                 android:layout_width="49dp"
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"
+                android:fontFamily="@font/orbitron_medium"
                 android:textSize="20sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorGreen"
                 android:layout_height="wrap_content"
                 android:text="Date:"
                 android:layout_marginStart="30dp" />
 
             <TextView
                 android:id="@+id/order_date"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_width="match_parent"
                 android:textColor="#000"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-
                 android:text="@{orderdata.dataItems.date}"
                 android:layout_toRightOf="@id/order_date_tv"
                 android:layout_marginStart="46dp"
@@ -61,10 +67,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_marginStart="30dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorGreen"
                 android:id="@+id/order_address_tv"
                 android:text="Address:"
                 android:layout_marginLeft="30dp" />
@@ -78,6 +85,7 @@
                 android:textColor="#000"
                 android:textSize="13sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/orbitron_medium"
                 android:text="@{orderdata.dataItems.address}"
                 android:layout_toEndOf="@+id/order_address_tv" />
         </RelativeLayout>
@@ -88,11 +96,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/order_amount_tv"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_marginStart="30dp"
                 android:text="Amount:"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorGreen"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp" />
             <TextView
@@ -104,6 +113,7 @@
                 android:layout_marginStart="16dp"
                 android:textColor="#000"
                 android:textSize="13sp"
+                android:fontFamily="@font/orbitron_medium"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@+id/order_amount_tv" />
@@ -118,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorGreen"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_marginStart="30dp"
                 android:text="phone:"
                 android:layout_marginLeft="30dp" />
@@ -128,6 +139,7 @@
                 android:id="@+id/order_phone"
                 android:text="@{orderdata.dataItems.phoneNumber}"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/orbitron_medium"
                 android:layout_marginStart="29dp"
                 android:layout_marginLeft="29dp"
                 android:textColor="#000"
@@ -146,8 +158,9 @@
                 android:layout_marginStart="30dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorGreen"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/orbitron_medium"
                 android:text="status:"
                 android:layout_marginLeft="30dp" />
         <TextView
@@ -157,6 +170,7 @@
             android:layout_marginStart="27dp"
             android:textColor="#FFE364"
             android:textSize="20sp"
+            android:fontFamily="@font/orbitron_medium"
             android:textStyle="bold"
             android:layout_marginLeft="27dp"
             android:text="@{orderdata.dataItems.status}"
@@ -169,12 +183,11 @@
         <Button
             android:layout_width="match_parent"
             android:id="@+id/order_but"
-            android:background="@color/colorRed"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorPrimary"
+            android:enabled="@{enablebutton}"
             android:layout_height="wrap_content"
-
             android:onClick="@{()->cancelorder.onClick(orderdata.snapId)}"
-            android:text="Cancel Order" /></RelativeLayout>
+            android:text="@{buttontext}" /></RelativeLayout>
 
 
 

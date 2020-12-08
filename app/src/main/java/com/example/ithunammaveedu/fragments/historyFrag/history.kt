@@ -32,10 +32,11 @@ class history : Fragment() {
         adapter=HistoryAdapter(dummy_data,CancelClickListener{ cancelItem(it) }, ItemShowClickListener { this.findNavController().navigate(historyDirections.actionHistoryToHistoryItems(
             it.toTypedArray()
         )) })
+        binding.histroyRecycler.itemAnimator=null
+
         binding.adapter=adapter
         viewModel.orderDetails.observe(viewLifecycleOwner, Observer {
-            adapter.list=it
-            adapter.notifyDataSetChanged()
+           adapter.setData(it)
 
         })
 

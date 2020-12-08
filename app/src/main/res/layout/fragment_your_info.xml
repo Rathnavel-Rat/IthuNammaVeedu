@@ -95,8 +95,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="15dp"
+                            android:fontFamily="@font/orbitron_medium"
                             android:text="Email"
-                            android:textColor="@color/colorBrown"
+                            android:textColor="#681614"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -105,7 +106,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvEmail"
+                            android:fontFamily="@font/orbitron_medium"
                             android:layout_marginLeft="15dp"
+                            android:textColor="#681614"
                             android:layout_marginRight="15dp"
                             android:drawablePadding="5dp"
                             android:inputType="textEmailAddress"
@@ -120,19 +123,22 @@
                             android:layout_below="@+id/etEmail"
                             android:layout_margin="15dp"
                             android:text="Username"
-                            android:textColor="@color/colorBrown"
+                            android:textColor="#681614"
+                            android:fontFamily="@font/orbitron_medium"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/name"
                             android:layout_width="match_parent"
+                            android:textColor="#681614"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvUsername"
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"
                             android:drawablePadding="30dp"
                             android:inputType="text"
+                            android:fontFamily="@font/orbitron_medium"
                             android:padding="10dp"
                             android:text="@{viewModel.username}" />
 
@@ -143,7 +149,8 @@
                             android:layout_below="@+id/name"
                             android:layout_margin="15dp"
                             android:text="MobileNumber"
-                            android:textColor="@color/colorBrown"
+                            android:fontFamily="@font/orbitron_medium"
+                            android:textColor="#681614"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -151,11 +158,13 @@
                             android:id="@+id/phonenumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/orbitron_medium"
                             android:layout_below="@+id/tvnumber"
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"
                             android:drawablePadding="30dp"
                             android:maxLength="10"
+                            android:textColor="#681614"
                             android:padding="10dp"
                             android:inputType="number"
                             android:text="@{viewModel.phone}"
@@ -168,8 +177,9 @@
                             android:layout_below="@+id/phonenumber"
                             android:layout_margin="15dp"
                             android:text="Address"
-                            android:textColor="@color/colorBrown"
+                            android:textColor="#681614"
                             android:textSize="14sp"
+                            android:fontFamily="@font/orbitron_medium"
                             android:textStyle="bold" />
 
                         <EditText
@@ -178,8 +188,10 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvaddress"
                             android:layout_marginLeft="15dp"
+                            android:textColor="#681614"
                             android:layout_marginRight="15dp"
                             android:drawablePadding="30dp"
+                            android:fontFamily="@font/orbitron_medium"
                             android:padding="10dp"
                             android:text="@{viewModel.address}" />
 
@@ -204,13 +216,14 @@
                     android:layout_alignStart="@+id/cv">
 
                     <Button
+                        android:fontFamily="@font/orbitron_medium"
                         android:id="@+id/saveUserInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="Update"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorBrown" />
+                        android:textColor="#681614"
+                        android:textAllCaps="false"/>
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>
