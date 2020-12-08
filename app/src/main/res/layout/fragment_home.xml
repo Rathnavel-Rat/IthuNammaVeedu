@@ -30,7 +30,6 @@
                 android:id="@+id/pager"
                 android:layout_height="match_parent">
 
-
             </androidx.viewpager2.widget.ViewPager2>
         </LinearLayout>
         <RelativeLayout
@@ -62,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:text="@string/veg"
                         android:fontFamily="@font/orbitron_medium"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="#6e1021"
                         android:layout_centerInParent="true"
                         android:layout_toRightOf="@+id/vegButton"
                         android:layout_height="wrap_content"
@@ -84,9 +83,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:text="@string/nonveg"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="#6e1021"
                         android:layout_centerInParent="true"
                         android:layout_toRightOf="@+id/nonvegButton"
+                        android:fontFamily="@font/orbitron_medium"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/nonvegButton" />
                 </RelativeLayout>
@@ -96,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{fabHandler::onBaseFabClick}"
                     android:background="@color/colorG1"
+                    android:fontFamily="@font/orbitron_medium"
                     android:clickable="true"
                     app:srcCompat="@drawable/ic_restaurant_menu_black_24dp" />
             </LinearLayout>
@@ -106,9 +107,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:fontFamily="@font/orbitron_medium"
-            android:background="@color/colorGreen1"
-            android:text="@string/proccedtobuy"
-            android:textColor="@color/colorBlack"
+            android:background="#64282a"
+            android:text="@string/proceed_to_buy"
+            android:textColor="#f8e49f"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
