@@ -67,6 +67,7 @@ class Home : Fragment() {
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
             TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                     tab.text = it.keys.toTypedArray()[position]
+
             }).attach()
 
         })
