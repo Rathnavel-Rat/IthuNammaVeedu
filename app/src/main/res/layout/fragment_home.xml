@@ -61,6 +61,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:text="@string/veg"
+                        android:fontFamily="@font/orbitron_medium"
                         android:textColor="@color/colorBlack"
                         android:layout_centerInParent="true"
                         android:layout_toRightOf="@+id/vegButton"
@@ -104,6 +105,7 @@
             android:id="@+id/P2B"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:fontFamily="@font/orbitron_medium"
             android:background="@color/colorGreen1"
             android:text="@string/proccedtobuy"
             android:textColor="@color/colorBlack"

@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/round_button"
+            android:fontFamily="@font/orbitron_medium"
             android:text="@string/placeorder"
             android:textColor="@color/colorBlack" />
 
@@ -44,6 +45,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="195dp"
+            android:fontFamily="@font/orbitron_medium"
             android:layout_below="@id/imageView"
             android:layout_height="33dp"
             android:layout_centerInParent="true"
