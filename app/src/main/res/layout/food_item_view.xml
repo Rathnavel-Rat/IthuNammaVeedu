@@ -16,7 +16,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardElevation="10dp"
-        app:cardBackgroundColor="#fae69c"
+        app:cardBackgroundColor="#fbebb1"
+
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,12 +49,12 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/orbitron_medium"
                     android:hint="Food Name"
-                    android:textColor="#6e1021"
+                    android:textColor="#71101e"
                     android:scrollbars="none"
                     android:scrollHorizontally="false"
                     android:singleLine="false"
                     android:text="@{food.foodName}"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -62,7 +63,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Cost"
-                    android:textColor="#6e1021"
                     android:fontFamily="@font/orbitron_medium"
                     android:layout_gravity="center_vertical"
                     android:singleLine="false"
@@ -80,7 +80,6 @@
                     android:id="@+id/add_button"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/orbitron_medium"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/colorPrimary"
                     android:onClick= "@{()->subclicklistener.onClick(food)}"
@@ -102,10 +101,10 @@
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/orbitron_medium"
                     android:textColor="@color/colorPrimary"
                     android:layout_toRightOf="@+id/cost_view"
                     android:onClick="@{()->addclicklistener.onClick(food)}"
+
                     android:text="+" />
             </RelativeLayout>
         </LinearLayout>
