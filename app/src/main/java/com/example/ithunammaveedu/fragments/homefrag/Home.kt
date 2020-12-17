@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import android.view.animation.AnimationUtils
 import android.view.animation.OvershootInterpolator
+import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -60,17 +61,22 @@ class Home : Fragment() {
                 binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack))
 
         }
-        binding.tabLayout.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
-        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
+
         viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
             binding.progressBar.visibility = View.GONE
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
             TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                    tab.text = it.keys.toTypedArray()[position]
+                 val tv=TextView(this.requireContext())
+                tv.text= it.keys.toTypedArray()[position]
+                val typeface = ResourcesCompat.getFont(this.requireContext(), R.font.orbitron_medium)
+                tv.typeface=typeface
+                tab.customView=tv
 
             }).attach()
 
         })
+        binding.tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#33ffff"));
+        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
 
         setHasOptionsMenu(true)
         return binding.root

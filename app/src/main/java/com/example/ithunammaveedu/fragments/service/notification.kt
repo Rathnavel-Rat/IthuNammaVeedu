@@ -31,7 +31,7 @@ class notification : Service() {
         val firebaseAuth=FirebaseAuth.getInstance().currentUser
         if(firebaseAuth!=null){
         val db= FirebaseDatabase.getInstance().reference.child("Orders").child(firebaseAuth!!.uid)
-        val arrayList=ArrayList<HistoryItem>()
+        var arrayList=ArrayList<HistoryItem>()
         db.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
 
@@ -60,11 +60,13 @@ class notification : Service() {
                     arrayList1.add(d)
                 }
                 val j=arrayList1.minus(arrayList)
+                println("list $j")
                 j.forEach {
-                    mNotificationManager.notify( Random.nextInt(0, 100), builder(it.dataItems.status)!!.build())
+
+                    mNotificationManager.notify( 0, builder(it.dataItems.status)!!.build())
                 }
 
-
+               arrayList=arrayList1
             }
 
         })
