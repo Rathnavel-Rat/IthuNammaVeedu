@@ -54,29 +54,17 @@ class Home : Fragment() {
         binding.pager.adapter= viewPagerAdapter
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack,null))
-        }
-        else{
-                binding.tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorBlack))
-
-        }
-
-        viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
+        viewModel.foodHashMap.observeOnce(this.requireActivity(), Observer { it ->
             binding.progressBar.visibility = View.GONE
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
             TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                 val tv=TextView(this.requireContext())
-                tv.text= it.keys.toTypedArray()[position]
-                val typeface = ResourcesCompat.getFont(this.requireContext(), R.font.orbitron_medium)
-                tv.typeface=typeface
-                tab.customView=tv
-
+                tab.text=it.keys.toTypedArray()[position]
             }).attach()
-
         })
-        binding.tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#33ffff"));
-        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorG1,null)
+
+
+       // binding.tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#33ffff"));
+       // binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorG1,null)
 
         setHasOptionsMenu(true)
         return binding.root

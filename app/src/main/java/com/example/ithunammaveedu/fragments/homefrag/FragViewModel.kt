@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.parcel.Parcelize
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class FragViewModel:ViewModel(){
 
@@ -52,12 +54,7 @@ class FragViewModel:ViewModel(){
                     fetchlist.add(c!!)
                 }
                 _foodList.value=fetchlist
-
                 _foodHashMap.value= fetchlist.filter { it.available }.groupBy { it.category }.toMutableMap()
-
-
-
-
             }
         })
 
@@ -70,7 +67,6 @@ class FragViewModel:ViewModel(){
         setItem!!.initial+=1
         _foodHashMap.value=foodHashMap.value
 
-
         if(getItem!=null){
             getItem.quantity+=1
             getItem.Total=getItem.quantity*food.cost
@@ -81,7 +77,6 @@ class FragViewModel:ViewModel(){
         }
         setCartTotal()
         isEmpty()
-
     }
     fun subAnItemToList(food: Food){
         val getItem= foodOrderList.find { it.name==food.foodName }

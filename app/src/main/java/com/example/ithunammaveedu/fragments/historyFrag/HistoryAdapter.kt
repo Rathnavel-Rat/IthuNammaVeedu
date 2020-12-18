@@ -1,6 +1,5 @@
 package com.example.ithunammaveedu.fragments.historyFrag
 
-import DiffCallback
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +13,7 @@ class HistoryAdapter(var list:ArrayList<HistoryItem>, var cancelClickListener: C
         setHasStableIds(false)
     }
     fun setData(model:ArrayList<HistoryItem>){
-        val diffResult = DiffUtil.calculateDiff(DiffCallback(list,model))
+        val diffResult = DiffUtil.calculateDiff(MyDiffCallback(list,model))
         list.clear()
         list.addAll(model)
         diffResult.dispatchUpdatesTo(this)
