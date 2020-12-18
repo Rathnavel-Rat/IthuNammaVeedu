@@ -14,7 +14,7 @@ class MyDiffCallback(newPersons: List<HistoryItem>, oldPersons: List<HistoryItem
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldPersons[oldItemPosition].snapId === newPersons[newItemPosition].snapId
+        return oldPersons[oldItemPosition].snapId == newPersons[newItemPosition].snapId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
@@ -23,7 +23,7 @@ class MyDiffCallback(newPersons: List<HistoryItem>, oldPersons: List<HistoryItem
 
 
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-        //you can return particular field for changed item.
+
         return super.getChangePayload(oldItemPosition, newItemPosition)
     }
 
