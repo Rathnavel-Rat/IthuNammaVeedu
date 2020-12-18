@@ -28,7 +28,11 @@
     <fragment
         android:id="@+id/yourInfo"
         android:name="com.example.ithunammaveedu.fragments.yourinfofrag.yourInfo"
-        android:label="yourInfo" />
+        android:label="yourInfo" >
+        <action
+            android:id="@+id/action_yourInfo_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
     <fragment
         android:id="@+id/cart"
         android:name="com.example.ithunammaveedu.fragments.cartFrag.cart"
