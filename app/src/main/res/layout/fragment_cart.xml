@@ -32,7 +32,7 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/round_button"
             android:fontFamily="@font/orbitron_medium"
-            android:text="@string/place_order"
+            android:text=  "@string/place_order"
             android:textColor="#6e1021"
              />
 
@@ -41,7 +41,7 @@
             android:layout_width="235dp"
             android:layout_height="183dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_shopping_cart_black_24dp" />
+            app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
 
         <TextView
             android:id="@+id/textView"

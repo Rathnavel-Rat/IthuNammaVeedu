@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="#f8e499"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -34,12 +35,12 @@
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="164dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="30dp"
                 android:textColor="#681614"
                 android:fontFamily="@font/orbitron_medium"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_check_black_24dp"
+                app:srcCompat="@drawable/ic_check_black_24dp"
                  />
 
             <TextView
@@ -49,7 +50,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/orbitron_medium"
                 android:layout_marginBottom="10dp"
-                android:text="Check History About your order and you can cancel your order in history page if you want"
+                android:text="Check History About your order in the History page!"
                 android:textSize="20sp"
                 android:textColor="#681614"/>
             <Button
