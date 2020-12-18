@@ -1,28 +1,34 @@
-
+package com.example.ithunammaveedu.fragments.historyFrag
 
 import androidx.recyclerview.widget.DiffUtil
 
-class DiffCallback<T>(val oldList:List<T>,val newList: List<T>): DiffUtil.Callback() {
-    private var OldList = listOf<T>()
-    private var NewList = listOf<T>()
-    init {
-        OldList=oldList
-        NewList=newList
-    }
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return  newList[newItemPosition] == oldList[oldItemPosition];
-    }
-
+class MyDiffCallback(newPersons: List<HistoryItem>, oldPersons: List<HistoryItem>) : DiffUtil.Callback() {
+    var oldPersons: List<HistoryItem>
+    var newPersons: List<HistoryItem>
     override fun getOldListSize(): Int {
-        return  OldList.size
+        return oldPersons.size
     }
 
     override fun getNewListSize(): Int {
-        return  NewList.size
+        return newPersons.size
+    }
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldPersons[oldItemPosition].snapId == newPersons[newItemPosition].snapId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return newList == oldList
+        return oldPersons[oldItemPosition] == newPersons[newItemPosition]
     }
 
+
+    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+
+        return super.getChangePayload(oldItemPosition, newItemPosition)
+    }
+
+    init {
+        this.newPersons = newPersons
+        this.oldPersons = oldPersons
+    }
 }

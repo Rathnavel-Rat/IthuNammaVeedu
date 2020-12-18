@@ -1,6 +1,8 @@
 package com.example.ithunammaveedu.fragments.homefrag
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -35,10 +37,12 @@ class Home : Fragment() {
     lateinit var viewModel: FragViewModel
     lateinit var viewPagerAdapter: ViewPagerAdapter
     var isfloatMenuOpen =false
+    lateinit var  sharedPreferences:SharedPreferences
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel=ViewModelProvider(requireActivity()).get(FragViewModel::class.java)
         viewPagerAdapter=ViewPagerAdapter(childFragmentManager, lifecycle, 0, emptyArray())
+        sharedPreferences = this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
         binding.fabHandler=FabHandler()
         closeFabMenu()
         binding.lifecycleOwner=this
@@ -62,7 +66,7 @@ class Home : Fragment() {
 
         }
 
-        viewModel.foodHashMap.observe(this.requireActivity(), Observer { it ->
+        viewModel.foodHashMap.observeOnce(this.requireActivity(), Observer { it ->
             binding.progressBar.visibility = View.GONE
             viewPagerAdapter.dataChanged(it.keys.size, it.keys.toTypedArray())
             TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
@@ -76,7 +80,7 @@ class Home : Fragment() {
 
         })
         binding.tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#33ffff"));
-        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
+        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorG1,null)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -118,8 +122,10 @@ class Home : Fragment() {
                 val googleSignInClient = GoogleSignIn.getClient(this.requireActivity(), gso)
                 googleSignInClient.signOut()
                 auth.signOut()
+                sharedPreferences.edit().putBoolean("firstTime",false).commit()
                 startActivity(intent)
                 this.requireActivity().finish()
+
             }
             R.id.search -> this@Home.findNavController().navigate(HomeDirections.actionHome2ToSearchList(type = "search"))
         }

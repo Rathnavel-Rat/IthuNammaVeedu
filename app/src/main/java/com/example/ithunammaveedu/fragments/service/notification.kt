@@ -94,6 +94,7 @@ class notification : Service() {
             .setSmallIcon(R.drawable.circle)
             .setContentTitle("Ithu Nama Vedu")
             .setContentText(content)
+             .setVibrate(longArrayOf(1000,1000))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
     }
 }

@@ -21,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_home)
+        //startService(Intent(this,notification::class.java))
         binding.lifecycleOwner=this
         navController=this.findNavController(R.id.myNavHostFragment)
         drawerLayout=binding.drawerLayout
@@ -40,14 +41,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    override fun onStop() {
-        startService(Intent(this,notification::class.java))
-        super.onStop()
-    }
 
-    override fun onPause() {
-        startService(Intent(this,notification::class.java))
-        super.onPause()
-    }
+
+
 
 }
