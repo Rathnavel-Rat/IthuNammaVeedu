@@ -28,22 +28,20 @@
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:weightSum="5"
-            android:background="#fbebb1"
             android:layout_margin="16dp"
             android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="100dp"
-                android:background="#fbebb1"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5">
-<!--
+
                 <ImageView
                     android:id="@+id/donut"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/ic_donut_small_black_24dp"
-                    tools:ignore="VectorDrawableCompat" />-->
+                    tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -56,27 +54,24 @@
 
                 <TextView
                     android:id="@+id/fname"
-                    android:layout_width="86dp"
                     android:fontFamily="@font/orbitron_medium"
+                    android:layout_width="86dp"
+                    android:textColor="#681614"
                     android:layout_height="46dp"
                     android:text="@{cart.name}"
-                    android:textSize="15sp"
-                    android:textColor="#6e1021"
-                    android:textStyle="bold"/>
+                    android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         app:quantity="@{cart}"
-                        android:width="30dp"
-                        android:textStyle="bold"
-                        android:textColor="#6e1021"
                         android:fontFamily="@font/orbitron_medium"
+                        android:width="30dp"
+                        android:textColor="#681614"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="match_parent"
-                        app:total="@{cart}"
-                        android:textColor="#6e1021"
                         android:fontFamily="@font/orbitron_medium"
-                        android:textStyle="bold"
+                        app:total="@{cart}"
+                        android:textColor="#681614"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
 
@@ -89,7 +84,6 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:text="Remove"
-                        android:textColor="#6e1021"
                         android:fontFamily="@font/orbitron_medium"
                         android:background="@color/colorRed"
                         android:onClick="@{()->removeclicklistener.onClick(cart)}"
@@ -98,7 +92,8 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:text="+"
-                        android:textColor="#6e1021"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
                         android:fontFamily="@font/orbitron_medium"
                         android:background="@color/colorDarkRed"
                         android:onClick="@{()->addclicklistener.onClick(cart)}"
@@ -107,7 +102,8 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:text="-"
-                        android:textColor="#6e1021"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
                         android:background="@color/colorGreen"
                         android:fontFamily="@font/orbitron_medium"
                         android:onClick="@{()->subclicklistener.onClick(cart)}"

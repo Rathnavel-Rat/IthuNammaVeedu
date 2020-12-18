@@ -42,9 +42,9 @@ class yourInfo : Fragment() {
 
                 )
 
-                sharedPreferences.edit().putBoolean("firstTime",true).apply()
+                sharedPreferences.edit().putBoolean("firstTime",true).commit()
 
-                sharedPreferences.edit().putString("username",binding.name.text.toString()).apply()
+                sharedPreferences.edit().putString("username",binding.name.text.toString()).commit()
 
             }
         }

@@ -53,6 +53,7 @@ class cart : Fragment() {
         sharedPreferences= this.requireActivity().getSharedPreferences("INV.PrefrenceFile", Context.MODE_PRIVATE)
         val adapter=CartAdapter(dummy_data,AddClickListener { run{viewModel.increamentCartItem(it)} },SubClickListener{ run{ viewModel.decreamentCartItem(it)} }, RemoveClickListener { run { viewModel.removeAnCartitem(it) }  })
         binding.adapter=adapter
+        println("ak47 ${sharedPreferences.getString("username","unknown")}")
 
         viewModel.foodCart.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
