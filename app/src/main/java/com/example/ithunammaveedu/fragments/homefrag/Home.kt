@@ -80,7 +80,7 @@ class Home : Fragment() {
 
         })
         binding.tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#33ffff"));
-        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorG1,null)
+        binding.tabLayout.background=ResourcesCompat.getDrawable(resources,R.color.colorPrimary,null)
 
         setHasOptionsMenu(true)
         return binding.root
